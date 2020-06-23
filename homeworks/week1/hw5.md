@@ -5,7 +5,7 @@
 1. 前端：利用程式碼渲染使用者看的到的介面，並負責互動流程中的　1、2、3、4，發送 Request 給　Server。
 2. 後端：負責互動流程中的5、6、7，利用程式碼向資料庫要資料，並整理好格式 Response 給前端。
 
-## 假設我今天去 Google 首頁搜尋框打上：JavaScri[t 並且按下 Enter，請說出從這一刻開始到我看到搜尋結果為止發生在背後的事情。
+## 假設我今天去 Google 首頁搜尋框打上：JavaScript 並且按下 Enter，請說出從這一刻開始到我看到搜尋結果為止發生在背後的事情。
 
 當打下 JavaScript 按下 Enter 後，你的瀏覽器會發送一個　Request 的訊息到　Google 的 Server ，由　Server　向資料庫要資料，資料庫會回傳這個 Request 裡面需要的資料，由 Server 的程式碼處理後，傳送一個 Response 給你的瀏覽器，然後渲染成你搜尋的結果。
 
