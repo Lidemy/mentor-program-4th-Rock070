@@ -13,3 +13,4 @@ function search(arr, n){
 
 console.log(search([1, 3, 10, 14, 39], 14)) //=> 3
 console.log(search([1, 3, 10, 14, 39], 299)) //=> -1
+
