@@ -9,9 +9,7 @@ request(
     const obj = JSON.parse(body)[0];
     // console.log(status)
     // console.log(error)
-    if (status === 404) {
-      console.log('找不到國家資訊');
-    } else {
+    if (status >= 200 && status< 300) {
       console.log(
         `
         國家：${obj.name}
@@ -20,6 +18,8 @@ request(
         國碼：${Number(obj.callingCodes[0])}
         `,
       );
+    } else {
+      console.log('找不到國家資訊');
     }
     // console.log(obj);
     // console.log(obj.currencies);

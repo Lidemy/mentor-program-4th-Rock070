@@ -1,10 +1,15 @@
 const request = require('request');
 
 request(
-  'https://lidemy-book-store.herokuapp.com/books',
+  'https://lidemy-book-store.herokuapp.com/books?_limit=10',
   (error, response, body) => {
-    const total = JSON.parse(body);
-    for (let i = 0; i < 10; i += 1) {
+    let total;
+    try {
+      total = JSON.parse(body);
+    } catch (e) {
+      console.log(e);
+    }
+    for (let i = 0; i < total.length; i += 1) {
       const book = total[i];
       console.log(`${book.id} ${book.name}`);
     }
