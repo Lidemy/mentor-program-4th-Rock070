@@ -1,83 +1,96 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-shadow */
+/* eslint-disable no-use-before-define */
+
 const request = require('request');
 const process = require('process');
 
-console.log(process.argv);
-request(
-  'https://lidemy-book-store.herokuapp.com/books',
-  (error, response, body) => {
-    const total = JSON.parse(body);
-    const third = process.argv[2];
-    const forth = process.argv[3];
-    const fifth = process.argv[4];
+const action = process.argv[2];
+const param = process.argv[3];
+const updateName = process.argv[4];
 
-    // console.log(typeof(forth))
-    // console.log(typeof(total[0].id))
-    if (third === 'list') {
-    // process.argv[2]
-      for (let i = 0; i < 20; i += 1) {
-        const book = total[i];
-        console.log(`${book.id} ${book.name}`);
+let data;
+
+
+switch (action) {
+  case 'list':
+    listBooks();
+    break;
+  case 'read':
+    readBook(param);
+    break;
+  case 'delete':
+    deleteBook(param);
+    break;
+  case 'update':
+    updateBook(param);
+    break;
+  default:
+    console.log('Available commands: list, read, delete, create and update');
+}
+
+function listBooks() {
+  request(
+    'https://lidemy-book-store.herokuapp.com/books?_limit=20',
+    (error, response, body) => {
+      if (error) {
+        return console.log('抓取失敗', error);
       }
-    } else if (third === 'read') {
-      request.get(`https://lidemy-book-store.herokuapp.com/books/${forth}`, (error, response, body) => {
-        console.log(body);
-      });
-      // console.log(`${total[forth-1].id} ${total[forth-1].name}`);
-    } else if (third === 'create') {
-      // console.log(total.length+1)
-      request.post(
-        'https://lidemy-book-store.herokuapp.com/books',
-        {
-          form: {
-            id: total.length + 1,
-            name: forth,
-          },
-        },
-      );
-    } else if (third === 'delete') {
-      request.del(`https://lidemy-book-store.herokuapp.com/books/${forth}`, (error, response, body) => {
-        // console.log(body)
-        // console.log(response.statusCode)
-      });
-    } else if (third === 'update') {
-      request.patch(
-        {
-          url: `https://lidemy-book-store.herokuapp.com/books/${forth}`,
-          form: {
-            name: fifth,
-          },
-        },
-        (error, response, body) => {
-          //   console.log(body);
-        },
-      );
-    }
-    // console.log(body);
-  },
-);
+      tryJsonString(body);
+      for (let i = 0; i < data.length; i += 1) {
+        console.log(data[i]);
+      }
+      return true;
+    },
+  );
+}
 
-// $ajax({
-//     url: 'https://google.com/query?id=1&&name=rock'
-//     'https://google.com/delete?id=1&&name=rock'
-// })
+function readBook(param) {
+  request(
+    `https://lidemy-book-store.herokuapp.com/books/${param}`,
+    (error, response, body) => {
+      if (error) {
+        return console.log('讀取失敗', error);
+      }
+      tryJsonString(body);
+      return console.log(data);
+    },
+  );
+}
 
-// request.post('http://service.com/upload', {form:{key:'value'}})
+function deleteBook(param) {
+  request.del(
+    `https://lidemy-book-store.herokuapp.com/books/${param}`,
+    (error, response, body) => {
+      if (error) {
+        return console.log('刪除失敗', error);
+      }
+      return console.log('刪除成功');
+    },
+  );
+}
 
-// request.post(
-//   {
-//     url: 'https://lidemy-book-store.herokuapp.com/books',
-//     form: {
-//       "id": "21",
-//       "name": "software engineer"}
-//   },
-//   function(error, reponse, body) {
-//     console.log(body)
-// })
-
-// request.delete(
-//   'https://lidemy-book-store.herokuapp.com/books',
-//   (error, response, body) => {
-//   }
-// )
+function updateBook(param) {
+  request.patch(
+    {
+      url: `https://lidemy-book-store.herokuapp.com/books/${param}`,
+      form: {
+        name: updateName,
+      },
+    },
+    (error, response, body) => {
+      if (error) {
+        return console.log('更新失敗', error);
+      }
+      return console.log('更新成功');
+    },
+  );
+}
+// 工具
+function tryJsonString(body) {
+  try {
+    data = JSON.parse(body);
+  } catch (e) {
+    console.log(e);
+  }
+}
