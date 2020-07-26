@@ -55,18 +55,23 @@ navbar .navbar {
 navbar .navbar a {
   text-decoration: none;
   color: black;
+  /* width: 100%; */
+  /* padding: 10px 100px; */
 }
+
 navbar .navbar span {
   padding: 10px 20px;
   margin-left: 8px;
   border-radius: 8px;
   cursor: pointer;
+  transition: 0.5s;
 }
+
 navbar .navbar span:hover {
   background-color: #ff7286;
   color: white;
   transform: scale(1.1);
-  transition: 0.5s;
+  
 }
 
 section#topphoto {
@@ -122,6 +127,10 @@ section#clickbtn button {
   letter-spacing: 0.32px;
   margin-top: 16px;
   margin-left: 23px;
+  transition: 0.5s;
+}
+section#clickbtn button:hover {
+  transform: scale(1.1); 
 }
 section#clickbtn button.order {
   background-color: #a8e8e1;
@@ -132,10 +141,7 @@ section#clickbtn button.searchOrder {
   border: solid 1px #f9f9b5;
 }
 
-section#clickbtn button:hover {
-  transform: scale(1.1);
-  transition: 0.5s;
-}
+
 
 section#meun .foodPhotos {
   display: flex;
@@ -227,10 +233,16 @@ footer section#footerBottom .copyright {
     text-align: center;
   }
   navbar .navbar {
+
     display: flex;
     flex-direction: column;
     text-align: center;
-    margin-bottom: 15px;
+    margin: 15px 0px;
+  }
+  
+  navbar .navbar a span {
+    display: block;
+
   }
 
   section#meun .foodPhotos {
