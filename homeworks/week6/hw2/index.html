@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>新拖延運動報名表單</title>
+    <style>
+        html {
+  padding: 0;
+  margin: 0;
+  background-color: #dddddd;
+}
+
+body {
+  padding: 100px 180px;
+  box-shadow: 1.8px 2.4px 5px 0 rgba(0, 0, 0, 0.3);
+}
+
+.content {
+  width: 100%;
+}
+.content .topYellow {
+  width: 100%;
+  box-sizing: border-box;
+  height: 3px;
+  border: solid 6px #fad312;
+  background-color: #fad312;
+  border-radius: 5px 5px 0px 0px;
+}
+.content .inner {
+  border-radius: 0px 0px 5px 5px;
+  background-color: white;
+  padding: 30px 60px;
+}
+.content .inner span, .content .inner .mark {
+  color: #e74149;
+}
+.content .inner section#info {
+  margin-bottom: 60px;
+}
+.content .inner p {
+  font-size: 14px;
+}
+.content .inner .title {
+  font-size: 20px;
+  margin: 20px 0px;
+  font-weight: normal;
+  font-family: MicrosoftJhengHei;
+}
+.content .inner input {
+  margin-bottom: 30px;
+  border: 1px solid #d0d0d0;
+  color: #afafaf;
+  font-size: 16px;
+  padding: 5px 5px;
+}
+.content .inner .submit {
+  background-color: #fad312;
+  margin-top: 58px;
+  margin-bottom: 20px;
+  width: 92px;
+  height: 40px;
+  color: #000000;
+}
+.content .inner header h1.title {
+  font-size: 36px;
+}
+.content .inner .other .title {
+  padding-bottom: 10px;
+  margin-bottom: 0px;
+}
+.content .inner .other p {
+  margin-top: 0;
+  margin-bottom: 20px;
+}
+.content .inner p.remind {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+@media(max-width: 1024px) {
+  body {
+    padding: 100px 150px;
+  }
+}
+@media(max-width: 768px) {
+  body {
+    padding: 50px 70px;
+  }
+}
+
+    </style>
+  </head>  
+  
+  <body>
+    
+<div class="content">
+    <div class="topYellow"></div>
+    <div class="inner">
+      <header>
+        <h1 class="title">新拖延運動報名表單</h1>
+      </header>
+      <section id="info">
+        <p>活動日期：2020/12/10 ~ 2020/12/11<br/>活動地點：台北市大安區新生南路二段1號</p>
+        <div class="mark">*必填</div>
+      </section>
+      <section id="form">
+        <div class="name">
+          <div class="title">暱稱<span>*</span></div>
+          <input type="text" placeholder="你的回答"/>
+        </div>
+        <div class="email">
+          <div class="title">電子郵件<span>*</span></div>
+          <input type="emal" placeholder="你的電子郵件"/>
+        </div>
+        <div class="phone">
+          <div class="title">手機號碼<span>*</span></div>
+          <input type="number" placeholder="你的手機號碼"/>
+        </div>
+        <div class="register">
+          <div class="title">報名類型<span>*</span></div>
+          <input id="bed" type="radio" name="register" value="躺在床上用想像力實作"/>
+          <label for="bed">躺在床上用想像力實作</label><br/>
+          <input id="floor" type="radio" name="register" value="趴在地上滑手機找現成的"/>
+          <label for="floor">趴在地上滑手機找現成的</label>
+        </div>
+        <div class="howKnow">
+          <div class="title">怎麼知道這個活動的？<span>*</span></div>
+          <input type="text" placeholder="你的回答"/>
+        </div>
+        <div class="other">
+          <div class="title">其他</div>
+          <p>對活動的一些建議</p>
+          <input type="text" placeholder="你的回答"/>
+        </div>
+      </section>
+      <input class="submit" type="submit" value="提交"/>
+      <p class="remind">請勿透過表單送出您的密碼。</p>
+    </div>
+  </div>
+  </body>
+
+</html>
