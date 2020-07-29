@@ -60,8 +60,8 @@ navbar .navbar a {
 }
 
 navbar .navbar span {
-  padding: 10px 20px;
-  margin-left: 8px;
+  padding: 10px 15px;
+  margin-left: 7px;
   border-radius: 8px;
   cursor: pointer;
   transition: 0.5s;
@@ -231,18 +231,30 @@ footer section#footerBottom .copyright {
 
   navbar {
     display: block;
+    overflow: hidden;
     text-align: center;
   }
   navbar .navbar {
 
+    
     display: flex;
     flex-direction: column;
     text-align: center;
-    margin: 15px 0px;
+    margin: 15px 0px 10px 0px;
+
   }
   
-  navbar .navbar a span {
+  navbar .navbar span {
+    padding: 10px 0px;
     display: block;
+    
+  }
+  navbar .navbar a  {
+    padding:  0px;
+    overflow: hidden;
+
+    border-radius: 8px;
+
 
   }
   section#introduction p {
@@ -307,10 +319,10 @@ footer section#footerBottom .copyright {
 <navbar>
     <div class="title">Just A Bite!</div>
     <div class="navbar">
-        <span>抽個大獎</span>
+        <a><span>抽個大獎</span></a>
         <a href="#clickbtn"><span>我要點餐</span></a>
         <a href="#clickbtn"><span>查詢訂單</span></a>
-        <span>常見問題</span>
+        <a><span>常見問題</span></a>
     </div>
   </navbar>
   <section id="topPhoto"> 
