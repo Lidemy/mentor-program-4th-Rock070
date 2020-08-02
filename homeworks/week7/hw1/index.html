@@ -94,103 +94,95 @@ body {
 }
     </style>
   <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const ansName = document.querySelector('input[name=name]')
+      const ansEmail = document.querySelector('input[name=email]')
+      const ansPhone = document.querySelector('input[name=phone]')
+      const ansRegister = document.querySelectorAll('input[name=register]')
+      const ansHowKnow = document.querySelector('input[name=howKnow]')
+      let ansRegisterValue ;
 
-       document.addEventListener('DOMContentLoaded', function() {
-          const ansName = document.querySelector('input[name=name]')
-          const ansEmail = document.querySelector('input[name=email]')
-          const ansPhone = document.querySelector('input[name=phone]')
-          const ansRegister = document.querySelectorAll('input[name=register]')
-          const ansHowKnow = document.querySelector('input[name=howKnow]')
-          let ansRegisterValue ;
+      function addWarn(ans) {
+        const warn = document.createElement('div')
+        const father = document.querySelector(`div.${ans.getAttribute('name')}`)
+        warn.innerText = '此欄位不可為空！'
+        warn.classList.add('redText')
+        father.appendChild(warn)
+      }
+
+      function removeWarn(ans) {
+        const father = document.querySelector(`div.${ans.getAttribute('name')}`)
+        const redText = document.querySelector(`div.${ans.getAttribute('name')} > div.redText`)
+        if(redText){
+          father.removeChild(redText)
+        }
+      }
           
+      function isInput(ans) {
+        if(!ans.value) {
+          return false
+        }
+        return true
+      }
 
-          function addWarn(ans) {
-            const warn = document.createElement('div')
-            const father = document.querySelector(`div.${ans.getAttribute('name')}`)
-            warn.innerText = '此欄位不可為空！'
-            warn.classList.add('redText')
-            father.appendChild(warn)
+      function isInputRadio(ans) {
+        for (let i = 0;i < ans.length; i+=1 ) {
+          if (ans[i].checked) {
+            ansRegisterValue = ans[i]
+            return true
           }
+        }
+        return false
+      }
 
-          function removeWarn(ans) {
-            const father = document.querySelector(`div.${ans.getAttribute('name')}`)
-            const redText = document.querySelector(`div.${ans.getAttribute('name')} > div.redText`)
-            if(redText){
-                father.removeChild(redText)
-            }
-          }
-          
-          function isInput(ans) {
-              if(!ans.value) {
-                return false
-            }
-             return true
-          }
+      function submitTest() {
+        if (!isInput(ansName)) {
+          addWarn(ansName)
+        }
+        if (!isInput(ansEmail)) {
+          addWarn(ansEmail)
+        }
+        if (!isInput(ansPhone)) {
+          addWarn(ansPhone)      
+        }
+        if (!isInputRadio(ansRegister)) {
+          addWarn(ansRegisterValue)              
+        }
+        if  (!isInput(ansHowKnow)) {
+          addWarn(ansHowKnow)
+        }
+      }
 
-          function isInputRadio(ans) {
-            for(let i = 0;i < ans.length; i+=1 ) {
-
-                if(ans[i].checked) {
-                    ansRegisterValue = ans[i]
-                    return true
-                }
-            }
-            return false
-          }
-
-          function submitTest() {
-              if(!isInput(ansName)) {
-                addWarn(ansName)
-              }
-              if(!isInput(ansEmail)) {
-                addWarn(ansEmail)
-              }
-              if(!isInput(ansPhone)) {
-                addWarn(ansPhone)      
-              }
-              if(!isInputRadio(ansRegister)) {
-                addWarn(ansRegisterValue)              
-              }
-              if(!isInput(ansHowKnow)) {
-                addWarn(ansHowKnow)
-              }
-          }
-
-          function isSubmit() {
-            if (isInput(ansName) && isInput(ansEmail) && isInput(ansPhone) && isInputRadio(ansRegister) && isInput(ansHowKnow)){
-              return true
-            }
-            return false
-          }
-          function alertValue() {
-            alert(`暱稱：${ansName.value}
+      function isSubmit() {
+        if (isInput(ansName) && isInput(ansEmail) && isInput(ansPhone) && isInputRadio(ansRegister) && isInput(ansHowKnow)){
+          return true
+        }
+        return false
+      }
+      function alertValue() {
+        alert(`暱稱：${ansName.value}
 電子郵件：${ansEmail.value}
 手機號碼：${ansPhone.value}
 報名類型：${ansRegisterValue.value}
 怎麼知道這個活動的：${ansHowKnow.value}
 對活動的一些建議：${document.querySelector('input[name=advice]').value}`)
+      }
+      document.querySelector('form').addEventListener('submit', function(e){
+        if (!isSubmit()) {
+          e.preventDefault()
+          removeWarn(ansName)
+          removeWarn(ansEmail)
+          removeWarn(ansPhone)
+          removeWarn(ansRegister[0])
+          removeWarn(ansHowKnow)
+          submitTest()
+          return false
         }
-          document.querySelector('form').addEventListener('submit', function(e){
-            
-            if(!isSubmit()) {
-                e.preventDefault()
-                removeWarn(ansName)
-                removeWarn(ansEmail)
-                removeWarn(ansPhone)
-                removeWarn(ansRegister[0])
-                removeWarn(ansHowKnow)
-
-                submitTest()
-                return false
-            }
-            
-            alertValue()
-            return true
-            
+        alertValue()
+        return true
         })
+    })
 
-         })
-      
   </script>
        
        
@@ -211,7 +203,6 @@ body {
       </section>
       <form action='' >
         <section id="form">
-        
             <div class="name">
             <div class="title">暱稱<span>*</span></div>
             <input type="text" placeholder="你的回答" name='name'  />
