@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+
+  <title>餐廳官網-常見問題</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" >
+
+  <link rel="stylesheet" href="css/styles.css?v=1.0">
+  <link rel="stylesheet" href="https://necolas.github.io/normalize.css/8.0.1/normalize.css">
+  <style>
+      * {
+  position: relative;
+}
+
+hr {
+  border: none;
+  border-bottom: 1px solid #a6e2c0;
+}
+
+.sectionTitle {
+  display: flex;
+  justify-content: center;
+  margin: 30px 0px 30px 0px;
+  font-size: 36px;
+}
+.sectionTitle::before {
+  content: " ";
+  height: 15px;
+  width: 38px;
+  background-color: #a3dea2;
+  position: absolute;
+  transform: translate(-300%, 82%);
+  border-radius: 2px;
+}
+
+navbar {
+  margin-top: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 32px;
+}
+navbar .title {
+  margin-left: 35px;
+  color: #489846;
+  font-size: 36px;
+}
+navbar .navbar {
+  font-size: 18px;
+  text-align: left;
+}
+navbar .navbar a {
+  text-decoration: none;
+  color: black;
+}
+navbar .navbar span {
+  padding: 10px 15px;
+  margin-left: 7px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.5s;
+}
+navbar .navbar span:hover {
+  background-color: #ff7286;
+  color: white;
+  transform: scale(1.1);
+}
+
+section#commonQuestion {
+  margin-bottom: 30px;
+}
+section#commonQuestion .questions {
+  padding: 0px 200px;
+}
+section#commonQuestion .questions .question-number {
+  color: #70b282;
+  cursor: pointer;
+  padding: 7px 0px;
+}
+section#commonQuestion .questions .question-number span.question {
+  margin-left: 10px;
+  color: #000000;
+}
+section#commonQuestion .questions .question-number .ans {
+  padding: 10px 35px;
+  color: #000000;
+  letter-spacing: 0.14px;
+}
+section#commonQuestion .questions .question-number .show {
+  display: none;
+}
+
+footer section#footerTop {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 20px 10px 20px;
+  background-color: #e8efee;
+  color: #484848;
+}
+footer section#footerTop .infos {
+  font-size: 14px;
+  line-height: 30px;
+}
+footer section#footerTop .mark {
+  text-align: right;
+  line-height: 40px;
+}
+footer section#footerTop .mark .title {
+  font-size: 36px;
+  color: #489846;
+}
+footer section#footerTop .mark .socialMedia {
+  font-size: 14px;
+  font-family: Questrial;
+}
+footer section#footerBottom .copyright {
+  padding: 10px 0px;
+  font-size: 16px;
+  color: white;
+  display: block;
+  text-align: center;
+  background-color: #35564b;
+  font-weight: 400;
+  font-family: MicrosoftJhengHei;
+}
+
+@media (max-width: 768px) {
+  html, body {
+    padding: 5px;
+  }
+
+  navbar {
+    display: block;
+    overflow: hidden;
+    text-align: center;
+  }
+  navbar .navbar {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    margin: 15px 0px 10px 0px;
+  }
+  navbar .navbar span {
+    padding: 10px 0px;
+    display: block;
+  }
+  navbar .navbar a {
+    padding: 0px;
+    overflow: hidden;
+    border-radius: 8px;
+  }
+
+  footer {
+    text-align: center;
+  }
+  footer section#footerTop {
+    flex-direction: column-reverse;
+  }
+  footer section#footerTop .infos {
+    padding: 8px;
+  }
+  footer section#footerTop .mark {
+    text-align: center;
+    padding: 8px;
+  }
+  footer section#footerBottom .copyright {
+    padding: 8px;
+  }
+}
+
+
+  </style>
+  <Script>
+    document.addEventListener('DOMContentLoaded', function() {
+      document.querySelector('.questions').addEventListener('click', function(e){
+      if(e.target.classList.contains('question')){
+        let num = e.target.getAttribute('data-value');
+        let ans = document.querySelector(`.ans-${num}`);
+        ans.classList.toggle('show');
+   }
+ })
+
+})
+  </Script>
+
+</head>
+  
+<body>
+
+
+    <navbar>
+        <div class="title">Just A Bite!</div>
+        <div class="navbar"><a><span>抽個大獎</span></a><a href="#clickbtn"><span>我要點餐</span></a><a href="#clickbtn"><span>查詢訂單</span></a><a><span>常見問題</span></a></div>
+      </navbar>
+      <section id="commonQuestion">
+        <div class="sectionTitle">常見問題</div>
+        <div class="questions">
+          <div class="question-number">Q1:<span class="question" data-value="1">如何辦理退貨？</span>
+            <div class="ans ans-1 show">申請退貨時，請利用顧客中心「查訂單」或「退訂 / 退款查詢」的「退訂/退貨」功能填寫申請，依申請次日起1個工作天內我們將審核案件，通過審核後即E-mail 回覆通知，並委託宅配公司於5個工作天內電話連絡前往取回商品，敬請保持電話暢通，並且請將原商品備妥(以原寄給您時的包裝再原封備妥)，請勿直接在商品原廠外盒書寫文字。宅配取件後即提供簽收單據予您留存，(宅配公司僅收件，商品由特約廠商驗收)。</div>
+          </div>
+          <hr/>
+          <div class="question-number">Q2:<span class="question" data-value="2">目前提供哪些付款方式？</span>
+            <div class="ans ans-2 show">本站付款方式為「信用卡」、「ATM轉帳」、「貨到付款」、「7-11 ibon付款」、「超商取貨付款」(書店商品) 、「PChome電子禮券」、「PChome儲值」；另針對行動裝置提供七種行動支付：「Apple Pay」、「Google Pay」、「LINE Pay」、「Samsung Pay」、「Pi拍錢包」、「街口支付」、「AFTEE先享後付」以及「悠遊付」。目前尚無臨櫃匯款、支票和現金等方式。</div>
+          </div>
+          <hr/>
+          <div class="question-number">Q3:<span class="question" data-value="3">線上刷卡如何操作呢？</span>
+            <div class="ans ans-3 show">線上刷卡的使用方式也超簡單，只要您確認您當次的購物清單與金額都無誤，就可立即到匯款上傳系統，登入個人帳號密碼後，點選"線上刷卡方式"，確認收件住址後，再進行刷卡確認程序即可～</div>
+          </div>
+          <hr/>
+          <div class="question-number">Q4:<span class="question" data-value="4">如何查詢目前訂單的處理情況？</span>
+            <div class="ans ans-4 show">收到訂單後正常情況下會在24小時內送達，您可以在本站「顧客中心」的「查訂單」功能，查詢商品處理流程。</div>
+          </div>
+          <hr/>
+          <div class="question-number">Q5:<span class="question" data-value="5">訂單成立後，是否可以取消或是更改訂單數量及商品？</span>
+            <div class="ans ans-5 show">由於受限營運、認證中心和銀行規範，無法變更訂單付款方式、內容、金額或是退補差額方式換購其它商品，因此尚無法提供線上網路直接由顧客取消訂單或修改，如有需要變更，我們建議最晚於貨到７日內至本站「顧客中心」申請退訂再重訂。</div>
+          </div>
+          <hr/>
+          <div class="question-number">Q6:<span class="question" data-value="6">我想購買的商品已經缺貨，什麼時候會進貨呢？</span>
+            <div class="ans ans-6 show">當您訂購時，卻發現無法進入訂購頁面，或頁面顯示本館的首頁畫面，即表示該項商品因廠商促銷活動已結束，商品不再提供訂購了，建議您可以重新整理瀏覽器確認一下或是考量選購其它商品！</div>
+          </div>
+          <hr/>
+          <div class="question-number">Q7:<span class="question" data-value="7">如何辦理退貨？</span>
+            <div class="ans ans-7 show">申請退貨時，請利用顧客中心「查訂單」或「退訂 / 退款查詢」的「退訂/退貨」功能填寫申請，依申請次日起1個工作天內我們將審核案件，通過審核後即E-mail 回覆通知，並委託宅配公司於5個工作天內電話連絡前往取回商品，敬請保持電話暢通，並且請將原商品備妥(以原寄給您時的包裝再原封備妥)，請勿直接在商品原廠外盒書寫文字。宅配取件後即提供簽收單據予您留存，(宅配公司僅收件，商品由特約廠商驗收)。</div>
+          </div>
+          <hr/>
+          <div class="question-number">Q8:<span class="question" data-value="8">目前提供哪些付款方式？</span>
+            <div class="ans ans-8 show">本站付款方式為「信用卡」、「ATM轉帳」、「貨到付款」、「7-11 ibon付款」、「超商取貨付款」(書店商品) 、「PChome電子禮券」、「PChome儲值」；另針對行動裝置提供七種行動支付：「Apple Pay」、「Google Pay」、「LINE Pay」、「Samsung Pay」、「Pi拍錢包」、「街口支付」、「AFTEE先享後付」以及「悠遊付」。目前尚無臨櫃匯款、支票和現金等方式。</div>
+          </div>
+          <hr/>
+          <div class="question-number">Q9:<span class="question" data-value="9">線上刷卡如何操作呢？</span>
+            <div class="ans ans-9 show">本站付款方式為「信用卡」、「ATM轉帳」、「貨到付款」、「7-11 ibon付款」、「超商取貨付款」(書店商品) 、「PChome電子禮券」、「PChome儲值」；另針對行動裝置提供七種行動支付：「Apple Pay」、「Google Pay」、「LINE Pay」、「Samsung Pay」、「Pi拍錢包」、「街口支付」、「AFTEE先享後付」以及「悠遊付」。目前尚無臨櫃匯款、支票和現金等方式。</div>
+          </div>
+          <hr/>
+          <div class="question-number">Q10:<span class="question" data-value="10">如何查詢目前訂單的處理情況？</span>
+            <div class="ans ans-10 show">本站付款方式為「信用卡」、「ATM轉帳」、「貨到付款」、「7-11 ibon付款」、「超商取貨付款」(書店商品) 、「PChome電子禮券」、「PChome儲值」；另針對行動裝置提供七種行動支付：「Apple Pay」、「Google Pay」、「LINE Pay」、「Samsung Pay」、「Pi拍錢包」、「街口支付」、「AFTEE先享後付」以及「悠遊付」。目前尚無臨櫃匯款、支票和現金等方式。</div>
+          </div>
+          <hr/>
+          <div class="question-number">Q11:<span class="question" data-value="11">訂單成立後，是否可以取消或是更改訂單數量及商品？</span>
+            <div class="ans ans-11 show">本站付款方式為「信用卡」、「ATM轉帳」、「貨到付款」、「7-11 ibon付款」、「超商取貨付款」(書店商品) 、「PChome電子禮券」、「PChome儲值」；另針對行動裝置提供七種行動支付：「Apple Pay」、「Google Pay」、「LINE Pay」、「Samsung Pay」、「Pi拍錢包」、「街口支付」、「AFTEE先享後付」以及「悠遊付」。目前尚無臨櫃匯款、支票和現金等方式。</div>
+          </div>
+          <hr/>
+          <div class="question-number">Q12:<span class="question" data-value="12">我想購買的商品已經缺貨，什麼時候會進貨呢？</span>
+            <div class="ans ans-12 show">本站付款方式為「信用卡」、「ATM轉帳」、「貨到付款」、「7-11 ibon付款」、「超商取貨付款」(書店商品) 、「PChome電子禮券」、「PChome儲值」；另針對行動裝置提供七種行動支付：「Apple Pay」、「Google Pay」、「LINE Pay」、「Samsung Pay」、「Pi拍錢包」、「街口支付」、「AFTEE先享後付」以及「悠遊付」。目前尚無臨櫃匯款、支票和現金等方式。</div>
+          </div>
+          <hr/>
+        </div>
+      </section>
+      <footer>
+        <section id="footerTop">
+          <div class="infos">
+            <div class="address">餐館地址: 天上地下天堂路三分之一里六段520號</div>
+            <div class="number">訂位專線：02-1314-5566</div>
+            <div class="time">營業時間：週一〜週五 09:00~18:00 / 週六、週日、國定假日（含連假）休息</div>
+            <div class="email">email：service@justabite.com.tw</div>
+          </div>
+          <div class="mark">
+            <div class="title">Just A Bite!</div>
+            <div class="socialMedia">Facebook / Instagram / Youtube</div>
+          </div>
+        </section>
+        <section id="footerBottom">
+          <div class="copyright">Copyright © 2020 Just A Bite All Rights Reserved. 咬一口股份有限公司版權所有</div>
+        </section>
+      </footer>
+
+</body>
+</html>
