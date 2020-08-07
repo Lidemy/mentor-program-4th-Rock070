@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+  <style>
+    * {
+    position: relative;
+    font-family: monospace;
+    }
+
+    body {
+    padding: 250px 100px;
+    background-color: #FFFFFF;
+    }
+
+    .finish {
+    text-decoration: line-through;
+    }
+
+    .all {
+    left: 50%;
+    right: 50%;
+    padding: 30px;
+    box-shadow: 0 4px 4px 0 #C8C8C8;
+    background-color: #FFF2DC;
+    transform: translate(-50%, -50%);
+    width: 60%;
+    }
+    .all .title {
+    font-size: 54px;
+    color: #4A90E2;
+    text-align: center;
+    margin-bottom: 20px;
+    }
+    .all .add {
+    margin-bottom: 30px;
+    width: 80%;
+    padding: 10px 15px;
+    left: 50%;
+    font-size: 18px;
+    transform: translate(-50%, 0);
+    border: none;
+    background-color: #FFF2DC;
+    transition-property: width;
+    width: 85%;
+    margin: 0;
+    transition: 0.5s;
+    }
+    .all input.add:focus {
+    outline: none;
+    border-bottom: 2px solid #4A90E2;
+    transition-property: width;
+    width: 95%;
+    transition: 0.5s;
+    }
+    .all .task-list {
+    top: 50%;
+    width: 100%;
+    color: #4A90E2;
+    margin-top: 30px;
+    }
+    .all .task-list .task {
+    width: 100%;
+    padding: 10px 5px;
+    cursor: pointer;
+    display: block;
+    }
+    .all .task-list .task:hover {
+    background-color: #FFFFFF;
+    }
+    .all .task-list .task input {
+    color: #4A90E2;
+    border: 1px #4A90E2 solid;
+    }
+    .all .task-list .task label {
+    font-size: 24px;
+    }
+    .all .task-list .task .cancel {
+    font-size: 30px;
+    position: absolute;
+    padding: 0px 15px;
+    right: 20px;
+    bottom: 5px;
+    cursor: pointer;
+    }
+
+  </style>
+  <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        let num = 2;
+        let add =  document.querySelector('input.add');
+        let taskList = document.querySelector('.task-list');
+        let cancel = document.querySelector('.cancel');
+        let task = document.querySelector('.task');
+        add.addEventListener('keypress', function(e){
+          if (e.key=='Enter') {
+            let task = document.createElement('div');
+            task.innerHTML=`<input class='check' data-value="${num}" type="checkbox" id="task-${num}"/><label for="task-${num}" data-value="${num}"> ${add.value}</label></div><div class="cancel" data-value="${num}">x</div>`
+            task.classList.add('task');
+            task.setAttribute('data-value',num);
+            taskList.appendChild(task);
+            add.value='';
+            num++;
+          }
+      })
+        taskList.addEventListener('click', function(e){
+          if (e.target.classList.contains('cancel')) {      
+            let dataValue = e.target.getAttribute('data-value')
+            document.querySelector(`.task[data-value='${dataValue}']`).remove()
+          }
+          if (e.target.classList.contains('check')) {
+          let dataValue = e.target.getAttribute('data-value')
+          document.querySelector(`.task[data-value='${dataValue}']`).classList.toggle('finish')
+          }
+        })                    
+      })
+  </script>
+</head>
+<body>
+<div class="all">
+  <div class="title">Todo List</div>
+  <input class="add" type="text" placeholder="Add somethig to do here !"/>
+  <div class="task-list">
+    <div class="task" data-value="1">
+      <input class="check" id="task-1" type="checkbox" data-value="1"/>
+      <label for="task-1" data-value="1">打籃球</label>
+      <div class="cancel" data-value="1">x</div>
+    </div>
+  </div>
+</div>
+</body>
+</html>
