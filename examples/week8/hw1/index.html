@@ -381,6 +381,7 @@
           }
 
           cb(null, data)
+
         } else {
           // 講解的時候忘了補這一段
           cb(errorMessage)
@@ -422,7 +423,7 @@
         document.querySelector('.lottery-result__title').innerText = title
         document.querySelector('.lottery-info').classList.add('hide')
         document.querySelector('.lottery-result').classList.remove('hide')
-
+        
       })
     })
 
