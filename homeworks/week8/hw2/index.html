@@ -117,7 +117,7 @@
             const errMessage = 'error'
 
             function getFiveGames(cb){
-                let apiUrl = 'https://api.twitch.tv/kraken/games/top?limit=5'
+                let apiUrl = `https://api.twitch.tv/kraken/games/top?limit=5`
                 request.open('GET', apiUrl, true)
                 request.onload = function() {
                     if(request.status >= 200 && request.status < 400) {
@@ -177,9 +177,7 @@
                                     </div>
                                 </div>
                                                   `
-
                             document.querySelector('.games-list').appendChild(gameBlock)
-                            
                         }
 
                         document.querySelector('.bottom h2.top20-games-title').innerText = game
@@ -198,7 +196,7 @@
                     getTwentyStreams(game)
                 }
             })
-            getFiveGames(function(err, data) {   //利用 callback function 帶出第一個排名的遊戲參數
+            getFiveGames(function(err, data) {   //預設渲染（利用 callback function 帶出第一個排名的遊戲參數）
                 if(err) {
                     alert(err)
                     return 
