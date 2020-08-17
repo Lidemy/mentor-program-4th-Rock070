@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>hw2 twitch</title>
+    <style>
+        * {
+        box-sizing: border-box;
+        }
+
+        html, body {
+        padding: 0;
+        margin: 0;
+        background-color: #222;
+        }
+
+        nav.top {
+        display: flex;
+        justify-content: space-around;
+        padding: 10px 10px;
+        align-items: center;
+        height: 80px;
+        background-color: #fff;
+        }
+        nav.top .nav-title {
+        font-size: 30px;
+        font-weight: 500;
+        }
+        nav.top .navs {
+        align-items: center;
+        display: flex;
+        height: 100%;
+        }
+        nav.top .navs .nav {
+        cursor: pointer;
+        padding: 15px 10px;
+        margin: 5px;
+        transition: 0.5s;
+        }
+        nav.top .navs .nav:hover {
+        background-color: #444;
+        color: white;
+        transform: scale(1.08);
+        }
+
+        .bottom {
+        padding: 10px;
+        color: white;
+        background-color: #222;
+        text-align: center;
+        }
+        .bottom h2.top20-games-title {
+        font-size: 30px;
+        font-weight: bold;
+        }
+        .bottom h4.top20-games-subtitle {
+        font-size: 24px;
+        font-weight: bold;
+        }
+        .bottom .games-list {
+        display: flex;
+        flex-wrap: wrap;
+        padding: 10px;
+        justify-content: center;
+        }
+        .bottom .games-list .game-block {
+        width: 350px;
+        height: 260px;
+        background-color: #333333;
+        cursor: pointer;
+        transition: 0.7s;
+        margin: 20px 10px;
+        }
+        .bottom .games-list .game-block:hover {
+        transform: scale(1.07);
+        }
+        .bottom .games-list .game-block .preview {
+        width: 350px;
+        height: 180px;
+        }
+        .bottom .games-list .game-block .preview img {
+        width: 100%;
+        height: 100%;
+        }
+        .bottom .games-list .game-block .infos {
+        margin-top: 5px;
+        width: 350px;
+        height: 70px;
+        display: flex;
+        align-items: center;
+        }
+        .bottom .games-list .game-block .infos .avatar {
+        width: 80px;
+        }
+        .bottom .games-list .game-block .infos .avatar img {
+        width: 80%;
+        border-radius: 50%;
+        margin: 5px;
+        }
+        .bottom .games-list .game-block .infos .name {
+        margin-left: 10px;
+        text-align-last: left;
+        font-weight: 700;
+        }
+        .bottom .games-list .game-block .infos .name .chanel-name {
+        font-size: 18px;
+        }
+        .bottom .games-list .game-block .infos .name .host-name {
+        font-size: 16px;
+        }
+
+    </style>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const request = new XMLHttpRequest
+            const errMessage = 'error'
+
+            function getFiveGames(cb){
+                let apiUrl = `https://api.twitch.tv/kraken/games/top?limit=5`
+                request.open('GET', apiUrl, true)
+                request.onload = function() {
+                    if(request.status >= 200 && request.status < 400) {
+                        let jsonFiveGames 
+                        try{
+                            jsonFiveGames = JSON.parse(request.responseText)
+                        } catch(e) {
+                            console.log(errMessage)
+                        }
+                        let gameList = jsonFiveGames.top
+                        for(let i = 0; i < gameList.length; i++) {
+                            let gameName = gameList[i].game.name
+                            let nav = document.createElement('div')
+                            nav.classList.add('nav')
+                            nav.innerText = gameName
+                            nav.setAttribute('data-value', gameName)
+                            document.querySelector('.app .top .navs').appendChild(nav)
+                        }
+                        cb(null, gameList[0].game.name) //將第一個遊戲帶出去
+                    } else {
+                        console.log(errMessage)
+                    }
+                }
+                request.setRequestHeader('Accept', 'application/vnd.twitchtv.v5+json')
+                request.setRequestHeader('client-id', 'kpku5eo961uoviqg7zisi4k2enj78h')
+                request.send()
+            }
+
+            function getTwentyStreams(game){
+                let apiUrl = `https://api.twitch.tv/kraken/streams/?game=${game}&limit=20`
+                document.querySelector('.games-list').innerHTML = ''
+
+                request.open('GET', apiUrl, true)
+                request.onload = function() {
+                    if(request.status >= 200 && request.status < 400) {
+                        let json 
+                        try{
+                            json = JSON.parse(request.responseText);
+                        } catch(e) {
+                            console.log(errMessage);
+                        }
+                        let streamList = json.streams;
+                        for(let i = 0; i < streamList.length; i++) {
+                            let preview = streamList[i].preview.large;
+                            let status = streamList[i].channel.status.substring(0, 20);
+                            let name = streamList[i].channel.name;
+                            let avatar = streamList[i].channel.logo;
+                            let gameBlock = document.createElement('div');
+                            gameBlock.classList.add('game-block');
+                            gameBlock.innerHTML = `
+                                <div class="preview"><img src="${preview}" alt=""/></div>
+                                <div class="infos">
+                                    <div class="avatar"><img src="${avatar}"/></div>
+                                    <div class="name"> 
+                                        <div class="chanel-name">${status}</div>
+                                        <div class="host-name">${name}</div>
+                                    </div>
+                                </div>
+                                                  `
+                            document.querySelector('.games-list').appendChild(gameBlock)
+                        }
+
+                        document.querySelector('.bottom h2.top20-games-title').innerText = game
+                    } else {
+                        console.log(errMessage)
+                    }
+                }
+                request.setRequestHeader('Accept', 'application/vnd.twitchtv.v5+json')
+                request.setRequestHeader('client-id', 'kpku5eo961uoviqg7zisi4k2enj78h')
+                request.send()
+            }
+            document.querySelector('.app .top .navs').addEventListener('click', function(e) {
+                if(e.target.classList.contains('nav')){
+                    console.log(e.target.getAttribute('data-value'))
+                    let game = e.target.getAttribute('data-value')
+                    getTwentyStreams(game)
+                }
+            })
+            getFiveGames(function(err, data) {   //預設渲染（利用 callback function 帶出第一個排名的遊戲參數）
+                if(err) {
+                    alert(err)
+                    return 
+                }
+                getTwentyStreams(data)
+            })
+        })
+    </script>
+</head>
+
+<body>
+<div class="app">
+    <nav class="top">
+      <div class="nav-title">Twitch Top Games</div>
+      <div class="navs">
+      </div>
+    </nav>
+    <div class="bottom">
+      <h2 class="top20-games-title"> </h2>
+      <h4 class="top20-games-subtitle">Top 20 popular live streams sorted by current viewers</h4>
+      <div class="games-list"> 
+      </div>
+    </div>
+  </div>
+</body>
+</html>

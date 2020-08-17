@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+
+  <title>餐廳官網-抽個大獎</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" >
+
+  
+  <style>
+   * {
+      /* border: 1px solid #000; */
+      position: relative;
+    }
+    .hide{
+      display: none;
+    }
+    .sectionTitle {
+      display: flex;
+      justify-content: center;
+      margin: 30px 0px 30px 0px;
+      font-size: 36px;
+    }
+    .sectionTitle::before {
+      content: " ";
+      height: 15px;
+      width: 38px;
+      background-color: #a3dea2;
+      position: absolute;
+      transform: translate(-300%, 82%);
+      border-radius: 2px;
+    }
+
+    navbar {
+      margin-top: 5px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 32px;
+    }
+    navbar .title {
+      margin-left: 35px;
+      color: #489846;
+      font-size: 36px;
+    }
+    navbar .navbar {
+      font-size: 18px;
+      text-align: left;
+    }
+    navbar .navbar a {
+      text-decoration: none;
+      color: black;
+    }
+    navbar .navbar span {
+      padding: 10px 15px;
+      margin-left: 7px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: 0.5s;
+    }
+    navbar .navbar span:hover {
+      background-color: #ff7286;
+      color: white;
+      transform: scale(1.1);
+    }
+    section#game-result{
+      width: 100%;
+      overflow: hidden;
+      color: #292222;
+    }
+    section#game-result .img {
+      position: relative;
+      height: 600px;
+      padding: 50px 0px;
+      background: center/cover no-repeat;
+      opacity: 0.6
+    }
+    section#game-result .img.first-prize{
+      background-image: url('https://cdn.pixabay.com/photo/2019/07/04/06/35/flight-4315953_960_720.jpg');
+
+    }
+    section#game-result .img.second-prize{
+      background-image: url('https://cdn.pixabay.com/photo/2016/11/30/08/46/living-room-1872192_960_720.jpg');
+
+    }
+    section#game-result .img.third-prize{
+      background-image: url('https://cdn.pixabay.com/photo/2017/08/10/03/00/youtube-2617510_960_720.jpg');
+    }
+    section#game-result .img.none-prize{
+      background-color: #000;
+      color: white;
+    }
+    
+    section#game-result .game-result-block {
+      position: absolute;
+      width: 100%;
+      left: 50%;
+      top: 25%;
+      transform: translate(-50%, -50%);
+    }
+    section#game-result .game-result-block .game-result-title{
+      font-size: 36px;
+      text-align: center;
+      width: 100%;
+    }
+    section#game-result .img.none-prize ~.game-result-block .game-result-title {
+      color: white;
+    }
+    
+    section#game-result .game-result-block .game-result-btn {
+      background-color: #e62a45;
+      color: white;
+      font-size: 20px;
+      border-radius: 8px;
+      width: 35%;
+      position: absolute;
+      left: 50%;
+      top: 200%;
+      padding: 15px 5px; 
+      transform: translate(-50%, 0);
+      border: none;
+      z-index: 5;
+      opacity: 1;
+    }
+    section#game .img{
+      width: 100%;
+      height: 600px;
+      background-image: url('https://i.imgur.com/3cOK86p.jpg');
+      padding: 50px 0px;
+      background-size: cover;
+      background-repeat: no-repeat;
+
+    }
+    section#game .img .game-block {
+      background-color: #fff;
+      position: absolute;
+      width: 600px;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      color: #322929;
+      padding: 30px;
+      border-radius: 16px;
+    }
+    section#game .img .game-block .top {
+      padding: 15px;
+      color: #5ec1b6;
+      text-align: center;
+      font-size: 24px;
+    }
+    section#game .img .game-block .infos .info-title {
+      font-size: 18px;
+      font-weight: bold;
+      margin-right: 10px;
+      display: inline-block;
+      padding: 5px 0px 5px 5px;
+      margin-right: 0;
+      width: 16%;
+    }
+    section#game .img .game-block .infos .info {
+      width: 79%;
+      line-height: 1.63;
+      padding: 1px 5px 5px 0px;
+    }
+    section#game .img .game-block .infos .duration, section#game .img .game-block .infos .detail, section#game .img .game-block .infos .prizes {
+      display: flex;
+      padding: 20px 10px;
+      width: 100%;
+      border-bottom: 1px solid #cdcdcd;
+    }
+    section#game .btn {
+      padding: 10px;
+      margin-top: 60px;
+      margin-bottom: 30px;
+    }
+    section#game .btn button {
+      width: 80%;
+      font-size: 20px;
+      background-color: #e62a45;
+      position: absolute;
+      border: none;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      padding: 15px 5px;
+      color: #ffffff;
+      border-radius: 16px;
+      cursor: pointer;
+    }
+
+    footer section#footerTop {
+      display: flex;
+      justify-content: space-between;
+      padding: 20px 20px 10px 20px;
+      background-color: #e8efee;
+      color: #484848;
+    }
+    footer section#footerTop .infos {
+      font-size: 14px;
+      line-height: 30px;
+    }
+    footer section#footerTop .mark {
+      text-align: right;
+      line-height: 40px;
+    }
+    footer section#footerTop .mark .title {
+      font-size: 36px;
+      color: #489846;
+    }
+    footer section#footerTop .mark .socialMedia {
+      font-size: 14px;
+      font-family: Questrial;
+    }
+    footer section#footerBottom .copyright {
+      padding: 10px 0px;
+      font-size: 16px;
+      color: white;
+      display: block;
+      text-align: center;
+      background-color: #35564b;
+      font-weight: 400;
+      font-family: MicrosoftJhengHei;
+    }
+
+    @media (max-width: 768px) {
+      html, body {
+        padding: 5px;
+      }
+
+      navbar {
+        display: block;
+        overflow: hidden;
+        text-align: center;
+      }
+      navbar .navbar {
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        margin: 15px 0px 10px 0px;
+      }
+      navbar .navbar span {
+        padding: 10px 0px;
+        display: block;
+      }
+      navbar .navbar a {
+        padding: 0px;
+        overflow: hidden;
+        border-radius: 8px;
+      }
+
+      footer {
+        text-align: center;
+      }
+      footer section#footerTop {
+        flex-direction: column-reverse;
+      }
+      footer section#footerTop .infos {
+        padding: 8px;
+      }
+      footer section#footerTop .mark {
+        text-align: center;
+        padding: 8px;
+      }
+      footer section#footerBottom .copyright {
+        padding: 8px;
+      }
+    }
+
+
+
+  </style>
+  
+
+  <Script>
+    document.addEventListener('DOMContentLoaded', function(e){
+      const btn = document.querySelector('.btn button')
+      const apiUrl = 'https://dvwhnbka7d.execute-api.us-east-1.amazonaws.com/default/lottery'
+      const errorResponse = '系統不穩定，請再試一次'
+      const request = new XMLHttpRequest
+      function getDate(cb) {
+        
+        request.open('GET', apiUrl, true)
+        request.onload = function() {
+          if(request.status >= 200 && request.status < 400) {
+            let data
+            try {
+              data = JSON.parse(request.responseText)
+            } catch(err) {
+              cb(errorResponse)
+              return
+            }
+            if(!data.prize) {
+              cb(errorResponse)
+              return
+            }
+            
+            cb(null, data) 
+
+
+          } else {
+            cb(errorResponse)
+          }
+        }
+
+        request.onerror = function() {
+          cb(errorResponse)
+        }
+        request.send()
+      }
+
+      btn.addEventListener('click', function() {
+        getDate(function(err, data) {
+          if(err) {
+            alert(err)
+            return 
+          }
+          
+          const prizes = {
+            FIRST: {
+              className: 'first-prize',
+              title: '恭喜你中頭獎了！日本東京來回雙人遊！',
+            },
+            SECOND: {
+              className: 'second-prize',
+              title: '二獎！90 吋電視一台！',
+            },
+            THIRD: {
+              className: 'third-prize',
+              title: '恭喜你抽中三獎：知名 YouTuber 簽名握手會入場券一張，bang！',
+            },
+            NONE: {
+              className: 'none-prize',
+              title: '銘謝惠顧',
+            }
+          }
+          const { className, title } = prizes[data.prize];
+          document.querySelector('section#game').classList.add('hide');
+          document.querySelector('section#game-result').classList.remove('hide');
+          document.querySelector('section#game-result .img').classList.add(className);
+          document.querySelector('#game-result .game-result-title').innerText = title;
+
+        })
+      })
+  
+    })
+    
+  </Script>
+
+</head>
+  
+<body>
+  <navbar>
+    <div class="title">Just A Bite!</div>
+    <div class="navbar"><a><span>抽個大獎</span></a><a href="#clickbtn"><span>我要點餐</span></a><a href="#clickbtn"><span>查詢訂單</span></a><a><span>常見問題</span></a></div>
+  </navbar>
+  <section id="game">
+    <div class="img">
+      <div class="game-block">
+        <div class="top">
+          <div class="title">2020 夏日輕盈特賞！ 抽獎活動辦法</div>
+        </div>
+        <div class="infos">
+          <div class="duration">
+            <div class="info-title">活動期間：</div>
+            <div class="info">2020/06/01~2020/07/01</div>
+          </div>
+          <div class="detail">
+            <div class="info-title">活動說明：</div>
+            <div class="info">今天老闆佛心來著決定給大家發獎勵，有看有機會，沒看只能幫QQ！只要在店內消費滿1000000元即有機會獲得 - 頭獎日本東京來回雙人遊！</div>
+          </div>
+          <div class="prizes">
+            <div class="info-title">獎  品：</div>
+            <div class="info">
+              <div class="prize">❤ 頭獎一名：日本東京來回雙人遊(市價14990元)</div>
+              <div class="prize">❤ 貳獎三名：90 吋電視一台(市價5990元)</div>
+              <div class="prize">❤ 參獎十名：知名 YouTuber 簽名握手會入場券一張(市價1500元)</div>
+            </div>
+          </div>
+        </div>
+        <div class="btn">
+          <button type="submit">我要抽獎</button>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section id='game-result' class='hide' >
+      <div class='img'></div>
+      <div class='game-result-block'>
+        <div class="game-result-title" >123</div>
+        <button class="game-result-btn" onclick='javascipt:window.location.reload()'>我要抽獎</button>
+      </div>
+
+  </section>
+
+  <footer>
+    <section id="footerTop">
+      <div class="infos">
+        <div class="address">餐館地址: 天上地下天堂路三分之一里六段520號</div>
+        <div class="number">訂位專線：02-1314-5566</div>
+        <div class="time">營業時間：週一〜週五 09:00~18:00 / 週六、週日、國定假日（含連假）休息</div>
+        <div class="email">email：service@justabite.com.tw</div>
+      </div>
+      <div class="mark">
+        <div class="title">Just A Bite!</div>
+        <div class="socialMedia">Facebook / Instagram / Youtube</div>
+      </div>
+    </section>
+    <section id="footerBottom">
+      <div class="copyright">Copyright © 2020 Just A Bite All Rights Reserved. 咬一口股份有限公司版權所有</div>
+    </section>
+  </footer>
+
+</body>
+</html>
+
+
+
+
