@@ -29,7 +29,7 @@
     // }
 
     // 取得 TABLE:board 留言
-    $sql = "SELECT * from board ORDER BY id DESC";
+    $sql = "SELECT * from rock070_comments ORDER BY id DESC";
     $result = $conn->query($sql);
 
     if(!$result) {

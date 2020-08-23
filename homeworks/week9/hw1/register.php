@@ -9,8 +9,8 @@
             echo "<script> alert('此帳號已被註冊。')</script>";
             }
     }
-    // 取得 TABLE:board 留言
-    $sql = "SELECT * from board";
+    // 取得 TABLE:rock070_comments 留言
+    $sql = "SELECT * from rock070_comments";
     $result = $conn->query($sql);
 
 

@@ -20,7 +20,7 @@
         $content = htmlspecialchars($_POST['content']);
 
         $sql = sprintf(
-            "INSERT INTO board(nickname, username, content) VALUES('%s', '%s', '%s')",
+            "INSERT INTO rock070_comments(nickname, username, content) VALUES('%s', '%s', '%s')",
             $user['nickname'], $user['username'], $content
         );
         

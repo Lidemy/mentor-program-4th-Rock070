@@ -9,7 +9,7 @@
         $password = htmlspecialchars($_POST['password']);
 
         $sql = sprintf(
-            "SELECT * from users WHERE username = '%s' AND password = '%s'",
+            "SELECT * from rock070_users WHERE username = '%s' AND password = '%s'",
             $username, $password
         );
         

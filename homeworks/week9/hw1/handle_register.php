@@ -9,7 +9,7 @@
         $password = htmlspecialchars($_POST['password']);
 
         $sql = sprintf(
-            "INSERT INTO users(nickname, username, password) VALUES('%s', '%s', '%s')",
+            "INSERT INTO rock070_users(nickname, username, password) VALUES('%s', '%s', '%s')",
             $nickname, $username, $password
         );
         

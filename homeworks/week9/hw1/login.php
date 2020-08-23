@@ -11,8 +11,8 @@
             echo "<script> alert('帳號或密碼輸入錯誤。')</script>";
             }
     }
-    // 取得 TABLE:board 留言
-    $sql = "SELECT * from board";
+    // 取得 TABLE:rock070_comments 留言
+    $sql = "SELECT * from rock070_comments";
     $result = $conn->query($sql);
 
     if(!$result) {
