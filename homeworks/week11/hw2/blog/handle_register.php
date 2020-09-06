@@ -12,9 +12,9 @@
             exit();
         }
 
-        $nickname = $_POST['nickname'];
-        $username = $_POST['username'];
-        $password= password_hash($_POST['password'], PASSWORD_DEFAULT);
+        $nickname = htmlspecialchars($_POST['nickname']);
+        $username = htmlspecialchars($_POST['username']);
+        $password= password_hash(htmlspecialchars($_POST['password']), PASSWORD_DEFAULT);
 
         $sql = "SELECT username FROM rock070_blog_users WHERE username = ?";
         $stmt = $conn->prepare($sql);

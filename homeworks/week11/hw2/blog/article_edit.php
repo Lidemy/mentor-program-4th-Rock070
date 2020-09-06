@@ -72,11 +72,11 @@
         <h3>發表文章</h3>
         <?if($row) {?>
             <form action="./handle_article_edit.php?article_id=<?= $article_id?>" method='POST'>
-                <input name='edit-article-title' type="text" value=<?=$row['title']?>>
-                <input name='edit-article-type' type="text" value=<?=$row['type']?>>
+                <input name='edit-article-title' type="text" value=<?=htmlspecialchars($row['title'])?>>
+                <input name='edit-article-type' type="text" value=<?=htmlspecialchars($row['type'])?>>
 
                 <script src="https://cdn.ckeditor.com/4.14.1/standard/ckeditor.js"></script>
-                <textarea name="editor1" value=<?=$row['content']?>></textarea>
+                <textarea name="editor1" value=<?=htmlspecialchars($row['content'])?>></textarea>
                 <script>CKEDITOR.replace("editor1");</script>
 
                 <input type="submit">

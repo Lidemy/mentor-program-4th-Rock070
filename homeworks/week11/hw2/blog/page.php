@@ -80,9 +80,9 @@
             
             <div class="img">
                 <div class="article-infos">
-                    <div class="article-title"><?= $row['title'] ?></div>
-                    <div class="article-type"><?= $row['type'] ?></div>
-                    <div>Posted by <span class="article-host"><?= $row['nickname'] ?></span> on <span class="article-create-at"><?= $row['create_at'] ?></span> </div>
+                    <div class="article-title"><?= htmlspecialchars($row['title']) ?></div>
+                    <div class="article-type"><?= htmlspecialchars($row['type']) ?></div>
+                    <div>Posted by <span class="article-host"><?= htmlspecialchars($row['nickname']) ?></span> on <span class="article-create-at"><?= htmlspecialchars($row['create_at']) ?></span> </div>
                 
                     
                 </div>
@@ -92,7 +92,7 @@
                 <div class="article-list">
                     <div class="article">
                         <!-- <button class='article-btn-edit'>編輯</button> -->
-                        <div class="article-content"><?= $row['content'] ?>
+                        <div class="article-content"><?= htmlspecialchars($row['content']) ?>
                         </div>
                     
                     </div>
