@@ -16,7 +16,6 @@
     $type = $_POST['edit-article-type'];
     $content = $_POST['editor1'];
 
-
     // 拿取使用者 id
     $user = getUserInfos($username) ;
 

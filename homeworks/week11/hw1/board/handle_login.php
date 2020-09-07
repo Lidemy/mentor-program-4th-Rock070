@@ -1,28 +1,42 @@
 <?php
     require_once('conn.php');
     require_once('utils.php');
+    
 
     if(empty($_POST['username']) || empty($_POST['password'])) {
         header('Location: ./login.php?errMsg=2');
-    } else {
-        $username = htmlspecialchars($_POST['username']);
-        $password = htmlspecialchars($_POST['password']);
+        exit();
+    }
 
-        $sql = sprintf(
-            "SELECT * from rock070_users WHERE username = '%s' AND password = '%s'",
-            $username, $password
-        );
+        $username = $_POST['username'];
+        $password = $_POST['password'];
+        // echo $password, $username;
+
+        $sql = "SELECT * from rock070_users WHERE username = ?";
         
-        $result = $conn->query($sql);
 
-        if(!$result) {
-          header('Location: ./login.php?errMsg=3');
-          die($conn->error);
-        } 
+        $stmt = $conn->prepare($sql);
+        $stmt->bind_param('s', $username);
+        $result = $stmt->execute();
+
+        if (!$result) {
+            die($conn->error);
+            header('Location: ./login.php?errMsg=3');
+            exit();
+        }
+        $result = $stmt->get_result();
+        
+        $row = $result->fetch_assoc();
+        if (password_verify($password, $row['password'])) {
+            session_start();
+            $_SESSION['username'] = $username;
+            header('Location: ./home.php');
+        } else {
+            header('Location: ./login.php?errMsg=3');
+        }
         //1. php 內建 session
 
-        session_start();
-        $_SESSION['username'] = $username;
+        
 
         // 2. 手動 session(cookie)
         // $token = getToken();
@@ -39,13 +53,12 @@
         //     die($conn->error);
         // }
         
-        header('Location: ./home.php');
 
         
         
         
     
-    }
+    
 
     
 

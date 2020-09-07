@@ -92,7 +92,7 @@
                 <div class="article-list">
                     <div class="article">
                         <!-- <button class='article-btn-edit'>編輯</button> -->
-                        <div class="article-content"><?= htmlspecialchars($row['content']) ?>
+                        <div class="article-content"><?= $row['content'] ?>
                         </div>
                     
                     </div>

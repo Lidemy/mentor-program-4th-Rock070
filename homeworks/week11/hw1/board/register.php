@@ -24,7 +24,7 @@
 <html>
 <head>
     <title>Rock070留言板-登入</title>
-    <link rel="stylesheet" href="./style.css">
+t" href="./style.css">
     <meta charset='utf-8'>
 </head>
 <body>

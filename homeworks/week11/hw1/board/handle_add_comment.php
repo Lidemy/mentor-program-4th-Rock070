@@ -5,7 +5,7 @@
     session_start();
 
     if(!empty($_SESSION['username'])){
-        $user = getUserFromUsername($_SESSION['username']);
+        $username = $_SESSION['username'];
     }
     
     // 2. 手做 session (cookie)
@@ -14,17 +14,18 @@
 
     // }
 
+    
     if(empty($_POST['content'])) {
         header('Location: ./home.php?errMsg=1');
     } else {
-        $content = htmlspecialchars($_POST['content']);
+        // $content = htmlspecialchars($_POST['content']);
+        $content = $_POST['content'];
 
-        $sql = sprintf(
-            "INSERT INTO rock070_comments(nickname, username, content) VALUES('%s', '%s', '%s')",
-            $user['nickname'], $user['username'], $content
-        );
-        
-        $result = $conn->query($sql);
+        $sql = "INSERT INTO rock070_comments(username, content) VALUES(?, ?)";
+
+        $stmt = $conn->prepare($sql);
+        $stmt->bind_param('ss', $username, $content);
+        $result = $stmt->execute();
     
         if(!$result) {
             die($conn->error);

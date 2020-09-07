@@ -38,17 +38,17 @@
     function getUserFromUsername($username) {
         global $conn;
 
-        $sql = sprintf(
-            "SELECT * from rock070_users WHERE username = '%s'",
-            $username
-        );
+        $sql = "SELECT * from rock070_users WHERE username = ?";
 
-        $result = $conn->query($sql);
+        $stmt = $conn->prepare($sql);
+        $stmt->bind_param('s', $username);
+        $result = $stmt->execute();
+
 
         if(!$result) {
             die($conn->error);
         }
-
+        $result = $stmt->get_result();
         $row = $result->fetch_assoc();
 
         return $row;

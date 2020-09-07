@@ -26,7 +26,8 @@
         "JOIN rock070_blog_users as U ".
         "ON A.user_id = U.user_id ".
         "WHERE U.username = ? ".
-        "AND A.is_deleted is NULL";
+        "AND A.is_deleted is NULL ".
+        "ORDER BY article_id DESC";
 
 
         $stmt = $conn->prepare($sql);
@@ -76,16 +77,16 @@
         <h2>管理文章</h2>
         <div class="article-list">
             <?php while($row = $result->fetch_assoc()){?>
-                <a href="./page.php?article_id=<?=$row['article_id']?>">   
+                <a href="./page.php?article_id=<?=htmlspecialchars($row['article_id'])?>">   
                     <div class="article">
                         <div class="article-card">
                             <div class="left">
-                                <h3><?=$row['title']?></h3>
+                                <h3><?=htmlspecialchars($row['title'])?></h3>
                             </div>
                             <div class="right">
-                                <div class="article-create-at"><?=$row['create_at']?></div>
-                                <a href='article_edit.php?article_id=<?=$row['article_id']?>'><div class="article-btn">編輯</div></a>
-                                <a href="handle_article_delete.php?article_id=<?=$row['article_id']?>"><div class="article-btn">刪除</div></a>
+                                <div class="article-create-at"><?=htmlspecialchars($row['create_at'])?></div>
+                                <a href='article_edit.php?article_id=<?=htmlspecialchars($row['article_id'])?>'><div class="article-btn">編輯</div></a>
+                                <a href="handle_article_delete.php?article_id=<?=htmlspecialchars($row['article_id'])?>"><div class="article-btn">刪除</div></a>
                             </div>
                         </div>
                         <hr>
