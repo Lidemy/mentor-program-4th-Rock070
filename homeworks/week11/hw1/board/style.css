@@ -151,7 +151,7 @@ header {
 }
 
 .page-info{
-    margin-top: 50px;
+    /* margin-top: 50px; */
     position: absolute;
     left: 50%;
     transform: translate(-55%, 100%);
@@ -165,7 +165,7 @@ header {
     display: flex;
     justify-content: center;
     padding: 10px;
-
+    transform: translateY(100%);
 }
 
 .paginator a,.paginator a:visited{

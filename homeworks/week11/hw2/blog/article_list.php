@@ -169,11 +169,11 @@
     <div class="paginator-infos">
         <div class="total_pages">第 <?=$page?> 頁，總共 <?=$total_page?> 頁</div>
         <div class="paginator">
-            <? if($page!='1') { ?>
+            <? if($page > 1) { ?>
                 <a href="./article_list.php?page=1">首頁</a>
                 <a href="./article_list.php?page=<?=$page-1?>">上一頁</a>
             <? } ?>
-            <? if($page!=$total_page) { ?>
+            <? if($page < $total_page) { ?>
                 <a href="./article_list.php?page=<?=$page+1?>">下一頁</a>
                 <a href="./article_list.php?page=<?=$total_page?>">最後一頁</a>
             <? } ?>

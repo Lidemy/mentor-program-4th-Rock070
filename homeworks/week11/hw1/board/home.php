@@ -179,11 +179,11 @@
             </span>
         </div>
         <div class="paginator">
-            <?php if($page != 1) {?>
+            <?php if($page > 1) {?>
                 <a href="./home.php">首頁</a>
                 <a href="./home.php?page=<?=$page-1?>">上一頁</a>
             <?php } ?>
-            <? if($page != $total_page) {?>
+            <? if($page < $total_page) {?>
                 <a href="./home.php?page=<?=$page+1?>">下一頁</a>
                 <a href="./home.php?page=<?=$total_page?>">最後一頁</a>
             <?php } ?>
