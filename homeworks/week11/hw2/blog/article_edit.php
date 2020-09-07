@@ -76,7 +76,7 @@
                 <input name='edit-article-type' type="text" value=<?=htmlspecialchars($row['type'])?>>
 
                 <script src="https://cdn.ckeditor.com/4.14.1/standard/ckeditor.js"></script>
-                <textarea name="editor1" value=<?=htmlspecialchars($row['content'])?>></textarea>
+                <textarea name="editor1" value=<?=$row['content']?>></textarea>
                 <script>CKEDITOR.replace("editor1");</script>
 
                 <input type="submit">

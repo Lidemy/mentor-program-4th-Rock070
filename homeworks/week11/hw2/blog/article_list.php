@@ -108,7 +108,7 @@
                             <div class="article-type"><?=htmlspecialchars($row['type'])?></div>
                             <div class="article-title"><?=htmlspecialchars($row['title'])?></div>
                             <div class="article-content">
-                                <?=((mb_strlen(htmlspecialchars($row['content']),'utf8') > 41) ? mb_substr(htmlspecialchars($row['content']), 0, 41, 'utf8') : htmlspecialchars($row['content'])).((mb_strlen(htmlspecialchars($row['content']),'utf8') > 41) ? " ..." : "")?>
+                                <?=((mb_strlen($row['content'],'utf8') > 41) ? mb_substr($row['content'], 0, 41, 'utf8') : $row['content']).((mb_strlen($row['content'],'utf8') > 41) ? " ..." : "")?>
                             </div>
                             <div class="article-host"><?=htmlspecialchars($row['nickname'])?></div>
                             <div class="article-create-at"><?=htmlspecialchars($row['create_at'])?></div>

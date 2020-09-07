@@ -12,9 +12,10 @@
     if(empty($_POST['edit-article-title']) || empty($_POST['edit-article-type']) || empty($_POST['editor1'])){
         header('Location: ./article_add.php?errMsg=1');
     }
-    $title = htmlspecialchars($_POST['edit-article-title']);
-    $type = htmlspecialchars($_POST['edit-article-type']);
-    $content = htmlspecialchars($_POST['editor1']);
+    $title = $_POST['edit-article-title'];
+    $type = $_POST['edit-article-type'];
+    $content = $_POST['editor1'];
+
 
     // 拿取使用者 id
     $user = getUserInfos($username) ;

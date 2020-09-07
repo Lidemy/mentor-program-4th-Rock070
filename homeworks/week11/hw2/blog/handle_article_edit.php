@@ -16,9 +16,9 @@
             $article_id = $_GET['article_id'];
         }
 
-        $title = htmlspecialchars($_POST['edit-article-title']);
-        $type = htmlspecialchars($_POST['edit-article-type']);
-        $content = htmlspecialchars($_POST['editor1']);
+        $title = $_POST['edit-article-title'];
+        $type = $_POST['edit-article-type'];
+        $content = $_POST['editor1'];
 
         // 拿取使用者 id
         $user = getUserInfos($username) ;
