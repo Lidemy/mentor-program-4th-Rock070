@@ -48,20 +48,21 @@
     $item_per_page = 10 ; 
     $offset = ($page-1) * $item_per_page;
     
-    $sql = "SELECT ".
-                "C.id as id, ".
-                "U.username as username, ".
-                "U.nickname as nickname, ". 
-                "C.create_at as create_at, ".
-                "C.content as content ".
-            "FROM rock070_comments as C ".
-            "LEFT JOIN rock070_users as U ". 
-            "ON C.username = U.username ".
-            "WHERE C.is_deleted IS NULL ".
-            "ORDER BY C.id DESC ".
-            "limit ? offset ?";
     
-    $stmt = $conn->prepare($sql);
+    $stmt = $conn->prepare(
+        "SELECT ".
+            "C.id as id, ".
+            "U.username as username, ".
+            "U.nickname as nickname, ". 
+            "C.create_at as create_at, ".
+            "C.content as content ".
+        "FROM rock070_comments as C ".
+        "LEFT JOIN rock070_users as U ". 
+        "ON C.username = U.username ".
+        "WHERE C.is_deleted IS NULL ".
+        "ORDER BY C.id DESC ".
+        "limit ? offset ?"
+    );
 
     $stmt->bind_param('ss', $item_per_page, $offset);
     $result = $stmt->execute();
@@ -81,6 +82,9 @@
     <title>Rock070留言板</title>
     <link rel="stylesheet" href="./style.css">
     <meta charset='utf-8'>
+    <style>
+
+    </style>
     <script>
         document.addEventListener('DOMContentLoaded', function(){
             const changeNicknameBtn = document.querySelector('button.change-nickname-btn');
@@ -110,6 +114,11 @@
     <main class='board'>
         <?php if($usernickname) {?>
             <a href="./handle_logout.php"><button class='btn'>登出</button></a>
+            
+            <?php if($user['identity'] === 'sys_admin') { ?>
+                <a href="./manage_back.php"><button class='btn'>管理後台</button></a>
+            <? } ?>
+
             <button class="change-nickname-btn btn">更換暱稱</button>
             <span class='hidden form-change-nickname'>
                 <form  action="./handle_nickname_change.php" method='POST'>

@@ -27,7 +27,11 @@
         $result = $stmt->get_result();
         
         $row = $result->fetch_assoc();
-        if (password_verify($password, $row['password'])) {
+        
+        $password_hash = $row['password'];
+        $is_password = password_verify($password, $password_hash);
+
+        if($is_password) {
             session_start();
             $_SESSION['username'] = $username;
             header('Location: ./home.php');
