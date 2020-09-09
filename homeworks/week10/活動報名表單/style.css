@@ -1,0 +1,187 @@
+* {
+  position: relative;
+}
+
+
+html, body{
+  padding: 0;
+  margin: 0;
+  background-color: #dddddd;
+  
+}
+
+header{
+  width: 100%;
+  height: 800px;
+}
+/* header .img {
+  background-image: url('./bg-header.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 100%;
+  height: 100%;
+} */
+
+.content {
+
+  padding: 100px 180px;
+  
+}
+.content .content-box{
+  box-shadow: 1.8px 2.4px 5px 0 rgba(0, 0, 0, 0.3);
+}
+.content .content-box .topYellow {
+  width: 100%;
+  box-sizing: border-box;
+  height: 3px;
+  border: solid 6px #fad312;
+  background-color: #fad312;
+  border-radius: 5px 5px 0px 0px;
+}
+.content .content-box .inner {
+  border-radius: 0px 0px 5px 5px;
+  background-color: white;
+  padding: 30px 60px;
+  
+}
+.content .content-box .inner span, .content .inner .mark {
+  color: #e74149;
+}
+.content .content-box .inner section#info {
+  margin-bottom: 60px;
+}
+.content .content-box .inner p {
+  font-size: 14px;
+}
+.content .content-box .inner .title {
+  font-size: 20px;
+  margin: 20px 0px;
+  font-weight: normal;
+  font-family: MicrosoftJhengHei;
+}
+.content .content-box .inner input {
+  margin-bottom: 30px;
+  border: 1px solid #d0d0d0;
+  /* color: #afafaf; */
+  font-size: 16px;
+  padding: 5px 5px;
+  cursor: pointer;
+}
+.content .content-box .inner .submit {
+  background-color: #fad312;
+  margin-top: 58px;
+  margin-bottom: 20px;
+  width: 92px;
+  height: 40px;
+  color: #000000;
+}
+.content .content-box .inner header{
+  height: 100px;
+}
+
+.content .content-box .inner header h1.title {
+  font-size: 36px;
+}
+.content .content-box .inner .other .title {
+  padding-bottom: 10px;
+  margin-bottom: 0px;
+}
+.content .content-box .inner .other p {
+  margin-top: 0;
+  margin-bottom: 20px;
+}
+.content .content-box .inner p.remind {
+  margin-top: 0;
+  padding-top: 0;
+}
+.redText {
+  color: red;
+}
+
+header img {
+  width: 100%;
+  height: 100%;
+}
+
+section#intro {
+  padding: 60px 0px;
+  height: 400px;
+  background-color: #fff;
+}
+
+section#intro .img-man{
+  background-image: url('png/travel.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 150px;
+  height: 150px;
+  position: absolute;
+  left: 50%;
+  top: 0%;
+}
+
+section#intro .intro-content{
+  width: 60%;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  line-height: 25px;
+  transform: translate(-50%, -50%)
+
+}
+
+section#intro .intro-content h3~p{
+  margin-bottom: 40px;
+}
+
+section#intro .yellow-text{
+  background-color: #fad312;
+}
+
+section#sign-up {
+  background-image: url('png/bg-footer.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 100%;
+  height: 343px;
+  margin-bottom: 0;
+
+}
+
+
+
+section#sign-up .sigh-up-content {
+  text-align: center;
+  padding: 60px 0px;
+}
+
+section#sign-up .sigh-up-content .sign-up-btn{
+  padding: 7px 70px;
+  font-size: 14px;
+  margin-top: 10px;
+  color: #000000;
+  text-align: center;
+  cursor: pointer;
+}
+
+
+footer {
+  background-color: #000000;
+  color: #999999;
+  text-align: center;
+
+  font-size: 13px;
+  height: 60px;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  
+}
+footer p {
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, 50%)
+}
