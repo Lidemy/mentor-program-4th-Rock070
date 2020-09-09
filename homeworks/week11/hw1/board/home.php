@@ -48,21 +48,20 @@
     $item_per_page = 10 ; 
     $offset = ($page-1) * $item_per_page;
     
+    $sql = "SELECT ".
+                "C.id as id, ".
+                "U.username as username, ".
+                "U.nickname as nickname, ". 
+                "C.create_at as create_at, ".
+                "C.content as content ".
+            "FROM rock070_comments as C ".
+            "LEFT JOIN rock070_users as U ". 
+            "ON C.username = U.username ".
+            "WHERE C.is_deleted IS NULL ".
+            "ORDER BY C.id DESC ".
+            "limit ? offset ?";
     
-    $stmt = $conn->prepare(
-        "SELECT ".
-            "C.id as id, ".
-            "U.username as username, ".
-            "U.nickname as nickname, ". 
-            "C.create_at as create_at, ".
-            "C.content as content ".
-        "FROM rock070_comments as C ".
-        "LEFT JOIN rock070_users as U ". 
-        "ON C.username = U.username ".
-        "WHERE C.is_deleted IS NULL ".
-        "ORDER BY C.id DESC ".
-        "limit ? offset ?"
-    );
+    $stmt = $conn->prepare($sql);
 
     $stmt->bind_param('ss', $item_per_page, $offset);
     $result = $stmt->execute();
