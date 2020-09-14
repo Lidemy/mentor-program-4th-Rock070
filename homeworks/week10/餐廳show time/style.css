@@ -1,0 +1,535 @@
+
+body, html {
+  padding: 20px;
+  margin: 0;
+}
+
+.hide {
+  display: none;
+}
+* {
+  /* border: solid 1px; */
+  position: relative;
+}
+
+.sectionTitle {
+  display: flex;
+  justify-content: center;
+  margin: 30px 0px 30px 0px;
+}
+
+.sectionTitle::before {
+  content: " ";
+  height: 15px;
+  width: 38px;
+  background-color: #a3dea2;
+  position: absolute;
+  transform: translate(-370%, 220%);
+  border-radius: 2px;
+}
+
+navbar {
+  margin-top: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 32px;
+}
+navbar .title a{
+  margin-left: 35px;
+  color: #489846;
+  font-size: 36px;
+  text-decoration: none;
+}
+
+
+
+navbar .navbar {
+  font-size: 18px;
+  text-align: left;
+}
+navbar .navbar a {
+  text-decoration: none;
+  color: black;
+  /* width: 100%; */
+  /* padding: 10px 100px; */
+}
+
+navbar .navbar span {
+  padding: 10px 15px;
+  margin-left: 7px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.5s;
+}
+
+navbar .navbar span:hover {
+  background-color: #ff7286;
+  color: white;
+  transform: scale(1.1);
+  
+}
+
+section#topPhoto {
+  width: 100%;
+  background-image: url("https://i.imgur.com/zDSozO8.jpg");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  padding: 200px 0px;
+  z-index: -1;
+}
+section#topPhoto h1 {
+  position: relative;
+  left: 50%;
+  top: 50%;
+  align-items: center;
+  display: inline-block;
+  font-weight: bold;
+  transform: translate(-50%, -20%);
+  text-align: center;
+  color: white;
+  font-size: 60px;
+  z-index: 3;
+}
+
+section#topPhoto::before {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translate(0, -50%);
+  width: 100%;
+  height: 100%;
+  content: " ";
+  opacity: 0.25;
+  background-color: #000000;
+}
+
+section#introduction p {
+  font-size: 16px;
+  text-align: center;
+  line-height: 50px;
+}
+
+section#clickbtn {
+  text-align: center;
+}
+section#clickbtn button {
+  cursor: pointer;
+  width: 300px;
+  height: 160px;
+  border-radius: 10px;
+  color: #3e613d;
+  font-size: 36px;
+  letter-spacing: 0.32px;
+  margin-top: 16px;
+  margin-left: 23px;
+  transition: 0.5s;
+}
+section#clickbtn button:hover {
+  transform: scale(1.1); 
+}
+section#clickbtn button.order {
+  background-color: #a8e8e1;
+  border: solid 1px #a8e8e1;
+}
+section#clickbtn button.searchOrder {
+  background-color: #f9f9b5;
+  border: solid 1px #f9f9b5;
+}
+
+
+
+section#meun .foodPhotos {
+  display: flex;
+  flex-direction: row;
+}
+section#meun .foodPhotos .foodPhoto img {
+  width: 100%;
+}
+
+section#comments .commentBoxs {
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  /* border: 5px solid black; */
+}
+section#comments .commentBoxs .commentBox {
+  border: 1px #c7e5ec solid;
+  margin: 5px;
+  width: 32%;
+  padding-top: 5%;
+  padding-bottom: 30px;
+}
+section#comments .commentBoxs .commentBox img {
+  display: flex;
+  width: 105px;
+  height: 105px;
+  position: absolute;
+  margin: auto;
+  left: 50%;
+  top: -20%;
+  transform: translate(-50%, 0px);
+  margin: 15px 0px;
+}
+section#comments .commentBoxs .commentBox .name {
+  font-size: 16px;
+  padding-bottom: 3%;
+  margin-top: 40px;
+}
+section#comments .commentBoxs .commentBox .comment {
+  font-size: 16px;
+}
+section#where iframe {
+    width: 100%;
+    margin-bottom: 43px;
+  }
+footer section#footerTop {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 20px 10px 20px;
+  background-color: #e8efee;
+  color: #484848;
+}
+footer section#footerTop .infos {
+  font-size: 14px;
+  line-height: 30px;
+}
+footer section#footerTop .mark {
+  text-align: right;
+  line-height: 40px;
+}
+footer section#footerTop .mark .title {
+  font-size: 36px;
+  color: #489846;
+}
+footer section#footerTop .mark .socialMedia {
+  font-size: 14px;
+  font-family: Questrial;
+
+}
+footer section#footerBottom .copyright {
+  padding: 10px 0px;
+  font-size: 16px;
+  color: white;
+  display: block;
+  text-align: center;
+  background-color: #35564b;
+  font-weight: 400;
+  font-family: MicrosoftJhengHei;
+
+}
+/* 常見問題.html css */
+
+section#commonQuestion {
+  margin-bottom: 30px;
+}
+
+section#commonQuestion .sectionTitle::before {
+  content: " ";
+  height: 15px;
+  width: 38px;
+  background-color: #a3dea2;
+  position: absolute;
+  transform: translate(-160%, 15%);
+  border-radius: 2px;
+}
+section#commonQuestion .questions {
+  padding: 0px 200px;
+}
+section#commonQuestion .questions .question-number {
+  color: #70b282;
+  cursor: pointer;
+  padding: 7px 0px;
+}
+section#commonQuestion .questions .question-number span.question {
+  margin-left: 10px;
+  color: #000000;
+}
+section#commonQuestion .questions .question-number .ans {
+  padding: 10px 35px;
+  color: #000000;
+  line-height: 25px;
+  letter-spacing: 0.14px;
+}
+section#commonQuestion .questions .question-number .show {
+  display: none;
+}
+
+/* 抽獎頁面.html css */
+
+section#game-result{
+  width: 100%;
+  overflow: hidden;
+  color: #292222;
+}
+section#game-result .img {
+  position: relative;
+  height: 600px;
+  padding: 50px 0px;
+  background: center/cover no-repeat;
+  opacity: 0.6
+}
+section#game-result .img.first-prize{
+  background-image: url('https://cdn.pixabay.com/photo/2019/07/04/06/35/flight-4315953_960_720.jpg');
+
+}
+section#game-result .img.second-prize{
+  background-image: url('https://cdn.pixabay.com/photo/2016/11/30/08/46/living-room-1872192_960_720.jpg');
+
+}
+section#game-result .img.third-prize{
+  background-image: url('https://cdn.pixabay.com/photo/2017/08/10/03/00/youtube-2617510_960_720.jpg');
+}
+section#game-result .img.none-prize{
+  background-color: #000;
+  color: white;
+}
+
+section#game-result .game-result-block {
+  position: absolute;
+  width: 100%;
+  left: 50%;
+  top: 25%;
+  transform: translate(-50%, -50%);
+}
+section#game-result .game-result-block .game-result-title{
+  font-size: 36px;
+  text-align: center;
+  width: 100%;
+}
+section#game-result .img.none-prize ~.game-result-block .game-result-title {
+  color: white;
+}
+
+section#game-result .game-result-block .game-result-btn {
+  background-color: #e62a45;
+  color: white;
+  font-size: 20px;
+  border-radius: 8px;
+  width: 35%;
+  position: absolute;
+  left: 50%;
+  top: 200%;
+  padding: 15px 5px; 
+  transform: translate(-50%, 0);
+  border: none;
+  cursor: pointer;
+  z-index: 5;
+  opacity: 1;
+}
+section#game {
+  width: 100%;
+  /* padding: 0px; */
+  /* box-sizing: border-box; */
+}
+section#game .img{
+  display: block;
+
+  width: 100%;
+  height: 600px;
+  /* background-color: yellow; */
+  background-image: url('https://i.imgur.com/3cOK86p.jpg');
+  background-size: cover;
+  padding: 50px 0px;
+  /* margin: 0px auto; */
+  margin: 0;
+  /* left: 50%; */
+  /* left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%); */
+
+
+
+
+  background-size: cover;
+  background-repeat: no-repeat;
+
+}
+section#game .img .game-block {
+  background-color: #fff;
+  position: absolute;
+  width: 600px;
+  left: 50%;
+  transform: translate(-50%, 0);
+  color: #322929;
+  padding: 30px ;
+  border-radius: 16px;
+}
+section#game .img .game-block .top {
+  padding: 15px;
+  color: #5ec1b6;
+  text-align: center;
+  font-size: 24px;
+}
+section#game .img .game-block .infos .info-title {
+  font-size: 18px;
+  font-weight: bold;
+  margin-right: 10px;
+  display: inline-block;
+  padding: 5px 0px 5px 5px;
+  margin-right: 0;
+  width: 16%;
+}
+section#game .img .game-block .infos .info {
+  width: 79%;
+  line-height: 1.63;
+  padding: 1px 5px 5px 0px;
+}
+section#game .img .game-block .infos .duration, section#game .img .game-block .infos .detail, section#game .img .game-block .infos .prizes {
+  display: flex;
+  padding: 20px 10px;
+  width: 100%;
+  border-bottom: 1px solid #cdcdcd;
+}
+section#game .btn {
+  padding: 10px;
+  margin-top: 60px;
+  margin-bottom: 30px;
+}
+section#game .btn button {
+  width: 80%;
+  font-size: 20px;
+  background-color: #e62a45;
+  position: absolute;
+  border: none;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  padding: 15px 5px;
+  color: #ffffff;
+  border-radius: 16px;
+  cursor: pointer;
+}
+@media (max-width: 1024px) {
+  section#commonQuestion .questions {
+    padding: 0px 110px;
+  }
+
+}
+
+@media (max-width: 768px) {
+  html, body {
+    padding: 5px;
+  }
+
+  navbar {
+    display: block;
+    overflow: hidden;
+    text-align: center;
+    margin-bottom: 20px;
+
+  }
+  navbar .navbar {
+
+    
+    display: inline-block;
+    flex-direction: column;
+    text-align: center;
+    padding: 10px;
+    margin: 15px 0px 5px 0px;
+    margin-bottom: 0;
+    /* overflow: hidden; */
+    
+
+  }
+  
+  navbar .navbar span {
+    padding: 20px 10px;
+    display: inline-flex;
+    margin-bottom: 0;
+
+
+    
+  }
+  navbar .navbar a  {
+    padding:  0px;
+    overflow: hidden;
+
+    border-radius: 8px;
+
+
+  }
+  section#introduction p {
+    line-height: 30px;
+  }
+
+  section#meun .foodPhotos {
+    display: flex;
+    flex-direction: column;
+  }
+  section#meun .foodPhotos img {
+    width: 100%;
+  }
+
+  section#comments h1 {
+    margin-bottom: 50px;
+  }
+  section#comments .commentBoxs {
+    flex-direction: column;
+  }
+  section#comments .commentBoxs .commentBox {
+    width: 100%;
+    margin-bottom: 25px;
+  }
+  section#comments .commentBoxs .commentBox .name{
+    padding: 8px 0px;
+    margin-top: 20px;
+  }
+  section#comments .commentBoxs .commentBox img {
+    width: 90px;
+    height: 90px;
+    top: -60px;
+  }
+
+  section#game {
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    /* padding: 0px 0px 50px 0px; */
+    height: 700px;
+    z-index: 2;
+    /* margin-bottom: 20px; */
+
+
+  }
+  section#game .img {
+    height: 100%;
+    padding: 30px 0px 30px 0px;
+
+    
+  }
+  section#game .img div.game-block {
+    width: 400px;
+
+
+  }
+  
+  section#commonQuestion .questions .question-number{
+      line-height: 30px;  
+  }
+ 
+  section#commonQuestion .questions {
+    padding: 0px 40px;
+  }
+
+  footer {
+    text-align: center;
+    margin-top: 50px;
+  }
+  footer section#footerTop {
+    flex-direction: column-reverse;
+  }
+  footer section#footerTop .infos {
+    padding: 8px;
+  }
+  footer section#footerTop .mark {
+    text-align: center;
+    padding: 8px;
+  }
+  footer section#footerBottom .copyright {
+    padding: 8px;
+  }
+}
+   
+    
