@@ -12,7 +12,7 @@ if(empty($_GET['todo_list_id'])) {
 }
 
 $todo_list_id = $_GET['todo_list_id'];
-$sql = "SELECT * FROM todos WHERE todo_list_id = ?";
+$sql = "SELECT * FROM rock070_todos WHERE todo_list_id = ?";
 $stmt = $conn->prepare($sql);
 $stmt->bind_param('s', $todo_list_id);
 $result = $stmt->execute();
@@ -43,7 +43,7 @@ while($row = $result->fetch_assoc()) {
 // 找到最大 todo_list_id
 
 
-$sql = "SELECT MAX(todo_list_id) as max_todo_list_id FROM todos";
+$sql = "SELECT MAX(todo_list_id) as max_todo_list_id FROM rock070_todos";
 
 $stmt = $conn->prepare($sql);
 

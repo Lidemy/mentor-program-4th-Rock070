@@ -4,7 +4,7 @@ header("Content-Type: application/json; charset=utf-8");
 
  $data = json_decode(file_get_contents("php://input"), true);
 
-$sql = "INSERT INTO todos(value, status, todo_list_id) VALUES(?, ?, ?)";
+$sql = "INSERT INTO rock070_todos(value, status, todo_list_id) VALUES(?, ?, ?)";
 $stmt = $conn->prepare($sql);
 $todo_list_id = $_GET['todo_list_id'];
 
