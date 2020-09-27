@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+  <style>
+    * {
+    position: relative;
+    font-family: monospace;
+    }
+
+    body {
+    padding: 80px 100px;
+    background-color: #FFFFFF;
+    margin: 10px;
+    }
+
+    .completed {
+    text-decoration: line-through;
+    }
+
+    .all {
+    padding: 30px;
+    box-shadow: 0 4px 4px 0 #C8C8C8;
+    background-color: #FFF2DC;
+    margin: 10px auto;
+    width: 60%;
+    }
+    .all .title {
+    font-size: 54px;
+    color: #4A90E2;
+    text-align: center;
+    margin-bottom: 20px;
+    }
+    .all .add {
+    margin-bottom: 30px;
+    width: 80%;
+    padding: 10px 15px;
+    left: 50%;
+    font-size: 18px;
+    transform: translate(-50%, 0);
+    border: none;
+    background-color: #FFF2DC;
+    transition-property: width;
+    width: 85%;
+    margin: 0;
+    transition: 0.5s;
+    }
+    .all input.add:focus {
+    outline: none;
+    border-bottom: 2px solid #4A90E2;
+    transition-property: width;
+    width: 95%;
+    transition: 0.5s;
+    }
+    .all .task-list {
+    top: 50%;
+    width: 100%;
+    color: #4A90E2;
+    margin-top: 30px;
+    }
+    .all .task-list .task {
+    width: 100%;
+    padding: 10px 5px;
+    cursor: pointer;
+    display: block;
+    }
+    .all .task-list .task:hover {
+    background-color: #FFFFFF;
+    }
+    .all .task-list .task input {
+    color: #4A90E2;
+    border: 1px #4A90E2 solid;
+    }
+    .all .task-list .task input.task-input {
+    font-size: 24px;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    }
+    .all .task-list .task input.task-input:focus{
+      outline: none;
+    }
+
+    .all .task-list .task .cancel {
+    font-size: 30px;
+    position: absolute;
+    padding: 0px 15px;
+    right: 20px;
+    bottom: 5px;
+    cursor: pointer;
+    }
+
+    .all .type{
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 10px;
+    }
+
+    .all .btn {
+      padding: 0px 10px;
+      cursor: pointer;
+      /* background-color: white; */
+      color: #4A90E2;
+      border-radius: 5px;
+      transition: 0.5s;
+    }
+
+    .all .type .btn:hover {
+      transform: scale(1.15);
+    }
+    .all .function {
+      margin-top: 40px;
+      display: flex;
+      justify-content: space-between;
+    }
+    .all .function .btn {
+      cursor: pointer;
+      color: white;
+      border-radius: 5px;
+      transition: 0.5s;
+      background-color: #DD0000;
+      border: 1px solid #DD0000;
+    }
+
+    .all .function .btn:hover {
+      transform: scale(1.15);
+    }
+
+
+
+
+
+  </style>
+
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
+
+
+  <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"> -->
+<script>
+
+  
+      document.addEventListener('DOMContentLoaded', function() {
+        const urlParams = new URLSearchParams(window.location.search);
+        let id = 2;
+        let add =  document.querySelector('input.add');
+        let taskList = document.querySelector('.task-list');
+        let cancel = document.querySelector('.cancel');
+        let task = document.querySelector('.task');
+        let clearAll = document.querySelector('.clear-all');
+        let btnMyTask = document.querySelector('.btn-my-task');
+        let btnInProgress = document.querySelector('.btn-in-progress');
+        let btnCompleted = document.querySelector('.btn-completed');
+        let save = document.querySelector('.save');
+        
+        let todoList = 
+        [
+          {
+            id : 1,
+            value: 'Basketball',
+            status: 'in-progress'
+          },
+        ];
+        
+      
+        //想辦法 appendChild 的地方都用這個 function
+        function appendViewTaskList(todo) {
+                let div = document.createElement('div');
+                div.classList.add('task');
+                div.innerHTML = `
+                  <input class='check' data-value="${todo.id}" status='${todo.status}' type="checkbox" ${todo.status == 'completed'?'checked':''}/>
+                  <input class='task-input ${todo.status == 'completed'?'completed':''}' data-value="${todo.id}"  value='${todo.value}'> </input>
+                  <div class="cancel" data-value="${todo.id}"> x </div>
+                `
+                div.setAttribute('data-value', todo.id);
+                taskList.appendChild(div);
+        }
+
+        function clearViewTaskList() {
+          while (taskList.firstChild) {
+              taskList.removeChild(taskList.firstChild);
+            }
+        }
+
+        if(urlParams.get('id')) {
+          const id = urlParams.get('id')
+          const request = new XMLHttpRequest;
+          request.open("GET", `api_todo_list.php?todo_list_id=${id}`, true);
+          request.send();
+          request.onload = function() {
+            if (this.status >= 200 && this.status < 400) {
+              const response = request.response
+              const json = JSON.parse(response);
+              const taskList = json.todo_list;
+              todoList = [];
+              clearViewTaskList();
+              for(task of taskList){
+                todoList.push(task);
+                appendViewTaskList(task)
+              }
+            }
+          }
+        }
+
+        
+        add.addEventListener('keypress', function(e){
+          if (e.key=='Enter') {
+              console.log(e.target.value)
+              if(e.target.value.length == 0 || e.target.value == ' '){
+                alert('Todo can not be empty!');
+                return
+              }
+
+            let task = document.createElement('div');
+            task.innerHTML=
+            `
+              <input class='check' data-value="${id}" status='in-progress' type="checkbox"/>
+              <input class='task-input' data-value="${id}"  value='${add.value}'> </input>
+              <div class="cancel" data-value="${id}"> x </div>
+            `
+            task.setAttribute('data-value', id)
+            task.classList.add('task')
+            taskList.appendChild(task);
+            
+
+            let todo = {
+              id: id,
+              value: add.value,
+              status: 'in-progress'
+            }
+            todoList.push(todo);
+            
+            add.value='';
+            id++;
+          }
+      })
+        taskList.addEventListener('click', function(e){
+          if (e.target.classList.contains('cancel')) {  
+
+            //刪除畫面上的 todo
+            let dataValue = e.target.getAttribute('data-value')
+            let taskInput = document.querySelector(`.task[data-value='${dataValue}']`);
+            taskInput.remove();
+            
+            // 尋找陣列中物件的位置，在用 splice 刪除
+
+            for (todo of todoList) {
+              if(todo.id == dataValue){
+                
+                let index = todoList.indexOf(todo)
+                todoList.splice(index, 1)
+              }
+            }
+          }
+          if (e.target.classList.contains('check')) {
+            let dataValue = e.target.getAttribute('data-value')
+            let taskInput = document.querySelector(`.task-input[data-value='${dataValue}']`)
+            //畫面：已完成的 todo 加上 completed Class
+            taskInput.classList.toggle('completed');
+            //將物件內的 status 改成 in-progress or completed
+            for(todo of todoList) {
+              if(todo.id == dataValue) {
+                todo.status = (todo.status == 'completed'? 'in-progress':'completed');
+              }
+            }
+          }
+        })
+        clearAll.addEventListener('click', function(e){
+            while (taskList.firstChild) {
+              taskList.removeChild(taskList.firstChild);
+            }
+            todoList = [];
+          
+        })
+
+        btnMyTask.addEventListener('click', function() {
+            clearViewTaskList();
+            for(todo of todoList) {
+              appendViewTaskList(todo);
+          }
+        })
+        btnInProgress.addEventListener('click', function() {
+          clearViewTaskList();
+          for(todo of todoList) {
+            if(todo.status == 'in-progress') {
+              appendViewTaskList(todo);
+            }
+          }
+            
+        })
+        btnCompleted.addEventListener('click', function() {
+          clearViewTaskList()
+          for(todo of todoList) {
+            if(todo.status == 'completed') {
+              appendViewTaskList(todo);
+            }
+          }
+        })   
+     
+              
+        save.addEventListener('click', function() {  
+          const request = new XMLHttpRequest;
+          let temp;
+          request.open("GET", `api_todo_list.php?todo_list_id=MAX`, true);
+            request.send();
+            request.onload = function() {
+            if (this.status >= 200 && this.status < 400) {
+              const jsonGetResponse = JSON.parse(request.response);
+              let temp = Number(jsonGetResponse.max_todo_list_id) + 1;
+              const json = JSON.stringify(todoList);
+              request.open('POST', `api_add_todo_list.php?todo_list_id=${temp}`, true);
+              request.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');
+              request.send(json);
+              request.onload = function() {
+                if (this.status >= 200 && this.status < 400) {
+                  window.location=`./index.html?id=${temp}`;
+                }
+              }
+            }
+          }
+        })
+   
+})
+    
+  </script>
+</head>
+<body>
+<div class="all">
+  <div class="type">
+    <div class="btn btn-my-task">My Tasks</div>
+    <div class="btn btn-in-progress">In Progress</div>
+    <div class="btn btn-completed">Completed</div>
+  </div>
+  <div class="title">Todo List</div>
+  <input class="add" type="text" placeholder="Add somethig to do here !"/>
+  <div class="task-list">
+    <div class="task" data-value="1">
+      <input class="check" id="task-1" type="checkbox" status='in-progress' data-value="1"/>
+      <input for="task-1" class='task-input' data-value="1" value='Basketball'/>
+      <div class="cancel" data-value="1">x</div>
+    </div>
+  </div>
+  <div class="function">
+    <div class="btn clear-all">Clear All Tasks</div>
+    <div class="btn save">Save</div>
+  </div>
+  
+</div>
+</body>
+</html>
