@@ -1,0 +1,160 @@
+$grey: #787878
+$white: #ffffff
+$green:#7aB22F
+$black: #000000
+$lightet-black: #323232
+*
+    position: relative
+    box-sizing: border-box
+
+
+body
+    margin: 0
+
+nav 
+    .nav
+        text-align: center
+        padding: 5px 25px
+        display: flex
+        justify-content: space-between
+        .nav-left
+            display: flex
+            align-items: center
+            a
+                padding: 0px
+                text-decoration: none
+                color: $grey
+            a:focus
+                color: $grey
+                text-decoration: none
+            h2
+                margin-right: 10px
+        .nav-right
+            display: flex
+            align-items: center
+            a
+                color: $grey
+                text-decoration: none
+            a:focus
+                color: $grey
+                text-decoration: none
+        span
+            cursor: pointer
+            padding: 10px
+            color: $grey
+header
+    .img
+        height: 450px
+        background-image: url('./cover.jpeg')
+        background-size: cover
+        background-repeat: no-repeat
+        background-position: center
+        text-align: center
+        color: $white
+        &::before
+            content: " "
+            display: block
+            height: 450px
+            background-color: rgba(0, 0, 0, 0.5)
+            z-index: -1
+            pointer-events: none
+        h3, h4, a
+            position: absolute
+            left: 50%
+            transform: translate(-50%, 0)
+            z-index: 5
+        h3
+            font-size: 60px
+            top: 15%
+        h4
+            font-size: 18px
+            top: 45%
+        a
+            color: $white
+            background-color: $green
+            padding: 10px 15px
+            top: 70%
+            border-radius: 5px
+            cursor: pointer
+            text-decoration: none
+            span
+                color: $white
+                background-color: $green
+                top: 70%
+                cursor: pointer
+section#body
+    display: flex
+    margin: 40px
+    section#articles
+        width: 60%
+        padding: 0px 30px 0px 0px
+        .article-list
+            a
+                text-decoration: none
+                color: $grey
+                &:focus
+                    text-decoration: none
+                    color: $grey
+                .article
+                    padding: 10px 50px
+                    font-weight: 400
+                    font-size: 16px
+                    cursor: pointer
+                    hr
+                        padding: 10px 0px
+                        border: none
+                        border-bottom: 2px solid rgba(0, 0, 0, 0.15)
+                    .article-type
+                        font-size: 14px
+                        color: $grey
+                    .article-title
+                        font-weight: bold
+                        color: $black
+                        font-size: 24px
+                        padding: 5px 0px
+                    .article-content
+                        color: $grey
+                        white-space: pre-line
+                        word-break: break-word
+                        line-height: 1.5
+                        padding-bottom: 15px
+                    .article-create-at
+                        color: $grey
+                    .article-host
+                        color: $black
+                        font-weight: 800
+                        font-size: 14px
+    section#popular-article
+        width: 20%
+        hr
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1)
+        .popular-article-list
+            margin-top: 10px
+            .popular-article
+                display: flex
+                font-weight: 400
+                margin-bottom: 10px
+                cursor: pointer
+                transition: 0.5s
+                &:hover
+                   transform: translateY(-2%)
+                .popular-article-id
+                    color: rgba(0, 0, 0, 0.15)
+                    font-size: 36px
+                    padding: 0px 10px
+                    display: flex
+                    align-items: top
+                .popular-article-infos
+                    line-height: 2
+                    .popular-article-title
+                        font-weight: bold
+                        font-size: 24px
+                    .popular-article-host
+                        font-size: 12px
+                    .popular-article-create-at
+                        color: rgba(0,0,0,0.5)
+footer
+    background: $lightet-black
+    color: $white
+    text-align: center
+    padding: 10px 0px
