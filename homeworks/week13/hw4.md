@@ -18,5 +18,5 @@ module bundler，可以將不同的檔案，打包成一個檔案，讓主檔案
 
 ## CSS Selector 權重的計算方式為何？
 
-!important > inline style > ID > Class/psuedo-class(偽類)/attribute（屬性選擇器） > Element
+!important > inline style > ID > Class/psuedo-class(偽類)/attribute（屬性選擇器） > Element。
 
