@@ -1,10 +1,7 @@
 # 程式導師實驗計畫第四期
 
-<<<<<<< HEAD
 備註：二十三週以後的課程尚未完成，作業也還沒決定
 
-=======
->>>>>>> 81d5ccc53ef1e7e07541a8316478a9d5480017da
 ## 這是什麼
 
 [程式導師實驗計畫第四期](https://bootcamp.lidemy.com)是一個為期六個月的計畫，要求學生付出一定的時間（每週至少付出三十小時），希望能在結業時培養出合格的（意思就是找得到工作）的工程師，並且在就職後依舊能持續成長，成為好的工程師。
@@ -770,19 +767,11 @@ React 在 2019 年 2 月推出 v16.8 這個版本，做了一個很大的改動�
 雖然說 class component 在很多 app 裡還是很常看到，但基本上新的 app 都是用 function component + hooks 在開發了，底下會把學習資源分成 function component + class component 兩塊，請先學習 function component，如果看不懂或有疑惑，再回去看 class component。
 
 #### function component 學習資源
-<<<<<<< HEAD
 
 1. [FE302] React 基礎 - hooks 版本，看到「React 基礎」結束，應該就能寫出本週的作業了
 
 部署的部分可以參考 FE302 課程中的「部署 React App」，記得在交作業之前先部署好，助教才比較方便改作業。
 
-=======
-
-1. [FE302] React 基礎 - hooks 版本，看到「React 基礎」結束，應該就能寫出本週的作業了
-
-部署的部分可以參考 FE302 課程中的「部署 React App」，記得在交作業之前先部署好，助教才比較方便改作業。
-
->>>>>>> 81d5ccc53ef1e7e07541a8316478a9d5480017da
 如果課程看不懂，可以額外參考：[從 Hooks 開始，讓你的網頁 React 起來](https://ithelp.ithome.com.tw/users/20103315/ironman/2668?page=1)
 
 #### class component 學習資源
@@ -835,13 +824,9 @@ React 在 2019 年 2 月推出 v16.8 這個版本，做了一個很大的改動�
 
 ### 第二十三週（11/16 ~ 11/22）：前端框架（三）
 
-<<<<<<< HEAD
 （課程內容及作業尚未決定）
 
 在之前的 React 課程中，我們已經慢慢熟悉 React 的思考模式，可是還有一些問題還沒解決，雖然你現在感受不太到，但是在 App 慢慢變大之後就會碰到了。
-=======
-在之前的 React 課程中，我們已經慢慢熟悉 React 的思考模式，雖然說 React 有提供管理 state 相關的功能，但有些時候可能不太夠用。
->>>>>>> 81d5ccc53ef1e7e07541a8316478a9d5480017da
 
 因此呢，Facebook 當初在推出 React 的時候，一併提出了另外一套應用程式的架構叫做 flux 來管理你的資料，以及如何改變這些資料。
 
@@ -869,11 +854,8 @@ Redux 的官方文件前陣子剛重寫過，我覺得寫得很棒，把 Redux �
 
 如果你還有時間，可以參考第二期講解 redux 的影片：
 
-<<<<<<< HEAD
-=======
 1. [程式導師實驗計畫第二期：Week14-1 Redux](https://www.youtube.com/watch?v=CrjEYMnix_8&fbclid=IwAR1Cy-0cw44dnMTExzzenmM3vTzWuTxxs4TpSV01wf29qb7m2rx0_ttRQ8M&ab_channel=Lidemy%E9%8B%B0%E5%AD%B8%E9%99%A2)
 
->>>>>>> 81d5ccc53ef1e7e07541a8316478a9d5480017da
 [HW23 作業連結](/homeworks/week23)
 
 #### 自我檢測
@@ -885,11 +867,6 @@ Redux 的官方文件前陣子剛重寫過，我覺得寫得很棒，把 Redux �
 
 ### 第二十四週（11/23 ~ 11/29）：前端框架（四）
 
-<<<<<<< HEAD
-（課程內容及作業尚未決定）
-
-最後一週裡面我們將用 redux 來解決非同步操作的問題，讓大家知道如何利用它與 redux-promise 來解決非同步的一些問題。
-=======
 在上一週其實就已經把主要的課程都講完了，只剩下一個東西，那就是 redux middleware，這其實是在 redux 中相當重要的一個概念，因此本週的作業也會以這個為主。
 
 除此之外，這一週也會做一些額外的補充，幫大家補充幾個重要的議題，像是：
@@ -897,7 +874,6 @@ Redux 的官方文件前陣子剛重寫過，我覺得寫得很棒，把 Redux �
 1. 為什麼需要 SSR？SSR 該怎麼做？
 2. Next.js 框架介紹
 3. TypeScript 簡介
->>>>>>> 81d5ccc53ef1e7e07541a8316478a9d5480017da
 
 指定教材：
 
