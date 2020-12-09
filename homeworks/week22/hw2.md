@@ -17,15 +17,23 @@
 
 ## 請列出 class component 的所有 lifecycle 的 method，並大概解釋觸發的時機點
 
-1. ComponentDidMount: 指的是當元件已經成功 render 到 DOM 上後，要做的事情。
+1. ComponentDidMount: 指的是當元件已經成功 render 到 DOM 上後，要做的事情，包裝成一個 function。
 
-2. componentWillUnmount: componentDidMount & componentWillUnmount 是成對出現的，如果只設定一個，將會出現 error。
+2. componentWillUnmount: 元件 unmount 前做的事。
 
-3. componentDidUpdate: 當 state 改變並成功渲染的時候，就會呼叫這個生命週期
+componentDidMount & componentWillUnmount 是成對出現的，如果只設定一個，將會出現 error。
 
-4. shouldComponentUpdate: 回傳 true ，可以執行並 render; 回傳 false，無法執行無 render
+3. componentDidUpdate: 當 state 改變並成功渲染的時候，就會呼叫這個生命週期。
 
+4. shouldComponentUpdate: 在元件 render 前執行，回傳 true ，可以執行並 render; 回傳 false，無法執行無法 render
 
 ## 請問 class component 與 function component 的差別是什麼？
 
+class component 功能較完整，但語法較複雜且冗長。
+
+function component: 語法較簡潔，無法設定 constructor。16.8 版本更新，加強了功能性，可以透過 hook 來設定 state....等等。
+
 ## uncontrolled 跟 controlled component 差在哪邊？要用的時候通常都是如何使用？
+
+controlled component: 用 state 的方式紀錄，並跟著 state 改變而重新渲染。
+uncontrolled: 不將狀態記錄到 state 裡，而是需要的時候再用 DOM & vanilla.js去取值。
